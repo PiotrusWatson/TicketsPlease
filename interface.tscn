@@ -10,6 +10,7 @@
 script = ExtResource("1_fq2hl")
 
 [node name="TimerWrapper" type="Node2D" parent="."]
+position = Vector2(69, 17)
 
 [node name="ClockImage" type="Sprite2D" parent="TimerWrapper"]
 texture = ExtResource("2_aiimi")
@@ -21,6 +22,7 @@ text = "00:00"
 script = ExtResource("3_b4vwd")
 
 [node name="ScoreWrapper" type="Node2D" parent="."]
+position = Vector2(25, 42)
 
 [node name="TicketImage" type="Sprite2D" parent="ScoreWrapper"]
 texture = ExtResource("3_8f7o6")
