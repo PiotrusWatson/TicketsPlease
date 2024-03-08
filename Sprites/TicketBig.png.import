@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhywbu4x8c8gp"
-path="res://.godot/imported/Timer.png-e6a184ee5cf2f8ad2282b0778cf651b3.ctex"
+uid="uid://buq1o0dt711gv"
+path="res://.godot/imported/TicketBig.png-e2c9a77f78d2331e310779137f91aca4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Timer.png"
-dest_files=["res://.godot/imported/Timer.png-e6a184ee5cf2f8ad2282b0778cf651b3.ctex"]
+source_file="res://Sprites/TicketBig.png"
+dest_files=["res://.godot/imported/TicketBig.png-e2c9a77f78d2331e310779137f91aca4.ctex"]
 
 [params]
 
