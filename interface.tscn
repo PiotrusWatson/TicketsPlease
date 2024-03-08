@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp1rsqd8vb2sp"]
+
+[ext_resource type="Script" path="res://CenterOfScreen.gd" id="1_fq2hl"]
+
+[node name="Interface" type="Node2D"]
+script = ExtResource("1_fq2hl")
+
+[node name="TimerWrapper" type="Node2D" parent="."]
+
+[node name="ClockImage" type="Sprite2D" parent="TimerWrapper"]
+
+[node name="TimerTime" type="Label" parent="TimerWrapper"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ScoreWrapper" type="Node2D" parent="."]
+
+[node name="TicketImage" type="Sprite2D" parent="ScoreWrapper"]
+
+[node name="ScoreCounter" type="Label" parent="ScoreWrapper"]
+offset_right = 40.0
+offset_bottom = 23.0
