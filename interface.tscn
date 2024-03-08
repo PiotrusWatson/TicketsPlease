@@ -20,7 +20,7 @@ offset_bottom = 23.0
 [node name="ScoreWrapper" type="Node2D" parent="."]
 
 [node name="TicketImage" type="Sprite2D" parent="ScoreWrapper"]
-position = Vector2(1037, 67)
+position = Vector2(1016, 57)
 texture = ExtResource("3_8f7o6")
 
 [node name="ScoreCounter" type="Label" parent="ScoreWrapper"]
