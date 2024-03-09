@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="TicketsPlease"
-run/main_scene="res://Scenes/interface.tscn"
+run/main_scene="res://Worlds/main_world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+run/energy_saving/keep_screen_on.editor=false
+run/stretch/aspect="expand"
+run/stretch/mode="viewport"
 
 [display]
 
