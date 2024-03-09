@@ -21,6 +21,7 @@ func _ready():
 	correct_detail_holder = Globals.CorrectDetails.new(correct_date, map, current_stop, place_range_builder)
 	
 	passengers = get_tree().get_nodes_in_group("passenger")
+	give_tickets_to_passengers()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

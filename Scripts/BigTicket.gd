@@ -2,7 +2,9 @@ extends Path2D
 
 
 @onready var pathFollow = $BigTicketPathFollow
-
+@onready var origin = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin
+@onready var destination = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2
+@onready var ticket_feature_date = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate
 var showTicket = false
 
 var traverseTime = 5 # Time it takes to traverse the path
@@ -25,7 +27,11 @@ func _process(delta):
 		pathFollow.progress += t + 15
 	pass
 
-func ShowTicket(ticket): 
+func ShowTicket(ticket: Globals.Ticket): 
+	ticket_feature_date.text = ticket.date._to_string()
+	var place_range = ticket.from_and_to
+	origin.text = place_range.from._to_string()
+	destination.text = place_range.to._to_string()
 	showTicket = true
 	visible = true
 	

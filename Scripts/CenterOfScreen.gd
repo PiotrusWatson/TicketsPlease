@@ -16,7 +16,7 @@ func _process(_delta):
 func WindowSizeChanges():
 	position.x = windowSize.x / 2
 	position.y = windowSize.y / 2
-func show_ticket(ticket):
+func show_ticket(ticket: Globals.Ticket):
 	big_ticket.ShowTicket(ticket)
 
 func hide_ticket():

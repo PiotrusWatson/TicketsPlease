@@ -142,6 +142,7 @@ class PlaceRangeBuilder:
 	func _init(_map: Array[Place], _current_stop: Place, _all_stops: Array[Place]):
 		map = _map
 		current_stop = _current_stop
+		all_stops = _all_stops
 	func pick_stop_before_current():
 		if current_stop.position == 0:
 			return current_stop
@@ -163,7 +164,7 @@ class PlaceRangeBuilder:
 		return bad_stop
 	
 	func generate_bad_range():
-		var bad_choice = PossibleBadPositions.keys()[randi() % PossibleBadPositions.size()]
+		var bad_choice = int(PossibleBadPositions.keys()[randi() % PossibleBadPositions.size()])
 		if bad_choice == PossibleBadPositions.BAD_FROM:
 			return PlaceRange.new(find_bad_stop(), pick_stop_after_current())
 		elif bad_choice == PossibleBadPositions.BAD_TO:

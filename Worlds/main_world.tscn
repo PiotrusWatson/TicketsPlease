@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=17 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dq3r6e1a6te1s" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/sky_fc.png" id="12_abref"]
 [ext_resource type="Texture2D" uid="uid://dgr62ldpnj8gn" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/hill.png" id="12_foiix"]
 [ext_resource type="Texture2D" uid="uid://dmoqkjcl08i5k" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/grassy_mountains_fc.png" id="13_j2h3y"]
+[ext_resource type="Script" path="res://Worlds/God.gd" id="15_hpppf"]
 
 [sub_resource type="GDScript" id="GDScript_6v55p"]
 script/source = "extends PathFollow2D
@@ -118,6 +119,9 @@ texture_repeat = 2
 texture = ExtResource("12_foiix")
 region_enabled = true
 region_rect = Rect2(0, 0, 9216, 216)
+
+[node name="God" type="Node2D" parent="."]
+script = ExtResource("15_hpppf")
 
 [connection signal="placed_carriages" from="Train" to="RailPositioner" method="_on_train_placed_carriages"]
 
