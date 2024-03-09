@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=16 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://dq3r6e1a6te1s" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/sky_fc.png" id="12_abref"]
 [ext_resource type="Texture2D" uid="uid://dgr62ldpnj8gn" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/hill.png" id="12_foiix"]
 [ext_resource type="Texture2D" uid="uid://dmoqkjcl08i5k" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/grassy_mountains_fc.png" id="13_j2h3y"]
-[ext_resource type="Script" path="res://Worlds/God.gd" id="15_hpppf"]
 
 [sub_resource type="GDScript" id="GDScript_6v55p"]
 script/source = "extends PathFollow2D
@@ -33,43 +32,6 @@ func _process(_delta):
 [node name="World" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_kr5c2")
-
-[node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("thing_to_follow")]
-script = ExtResource("2_vhvwl")
-thing_to_follow = NodePath("../Conductor")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="PlayerCamera"]
-
-[node name="Interface" parent="PlayerCamera/CanvasLayer" instance=ExtResource("7_qtk3u")]
-
-[node name="BigTicketPathFollow" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath" index="0"]
-cubic_interp = false
-script = SubResource("GDScript_6v55p")
-
-[node name="TicketCheckingPLaceholder" type="GridContainer" parent="PlayerCamera/CanvasLayer/Interface"]
-visible = false
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -536.0
-offset_bottom = -284.0
-script = ExtResource("2_x1h41")
-
-[node name="RailPositioner" type="Node2D" parent="."]
-script = ExtResource("9_lf27q")
-
-[node name="Rail" type="Node2D" parent="RailPositioner"]
-script = ExtResource("9_hi4ob")
-
-[node name="ThingPlacer" parent="RailPositioner/Rail" instance=ExtResource("8_pe0my")]
-thing_to_place = ExtResource("9_14sfv")
-
-[node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
-
-[node name="Train" type="Node2D" parent="."]
-script = ExtResource("5_poxl3")
-carriage_number = 2
-
-[node name="Carriages" parent="Train" instance=ExtResource("8_pe0my")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_enabled = true
@@ -120,8 +82,44 @@ texture = ExtResource("12_foiix")
 region_enabled = true
 region_rect = Rect2(0, 0, 9216, 216)
 
-[node name="God" type="Node2D" parent="."]
-script = ExtResource("15_hpppf")
+[node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("thing_to_follow")]
+script = ExtResource("2_vhvwl")
+thing_to_follow = NodePath("../Conductor")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PlayerCamera"]
+
+[node name="Interface" parent="PlayerCamera/CanvasLayer" instance=ExtResource("7_qtk3u")]
+
+[node name="ScoreCounter" parent="PlayerCamera/CanvasLayer/Interface/Score" index="1"]
+text = " 0/5"
+
+[node name="BigTicketPathFollow" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath" index="0"]
+cubic_interp = false
+script = SubResource("GDScript_6v55p")
+
+[node name="TicketCheckingPLaceholder" type="GridContainer" parent="PlayerCamera/CanvasLayer/Interface"]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -536.0
+offset_bottom = -284.0
+script = ExtResource("2_x1h41")
+
+[node name="RailPositioner" type="Node2D" parent="."]
+script = ExtResource("9_lf27q")
+
+[node name="Rail" type="Node2D" parent="RailPositioner"]
+script = ExtResource("9_hi4ob")
+
+[node name="ThingPlacer" parent="RailPositioner/Rail" instance=ExtResource("8_pe0my")]
+thing_to_place = ExtResource("9_14sfv")
+
+[node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
+
+[node name="Train" type="Node2D" parent="."]
+script = ExtResource("5_poxl3")
+carriage_number = 2
+
+[node name="Carriages" parent="Train" instance=ExtResource("8_pe0my")]
 
 [connection signal="placed_carriages" from="Train" to="RailPositioner" method="_on_train_placed_carriages"]
 
