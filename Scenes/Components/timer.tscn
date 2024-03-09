@@ -5,6 +5,8 @@
 
 [node name="TimerWrapper" type="Node2D"]
 position = Vector2(451, -301)
+script = ExtResource("2_bykul")
+timerCountdownSeconds = 30
 
 [node name="ClockImage" type="Sprite2D" parent="."]
 texture = ExtResource("1_0t4vm")
@@ -13,5 +15,3 @@ texture = ExtResource("1_0t4vm")
 offset_right = 40.0
 offset_bottom = 23.0
 text = "00:00"
-script = ExtResource("2_bykul")
-timerCountdownSeconds = 10

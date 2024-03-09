@@ -24,7 +24,7 @@ var Names = ["Bimbleby", "Shepherds Crease", "Sprunton", "Kabmeelington",
 func make_current_stop(map: Array[Place]):
 	return map[randi() % (map.size() - 1)]
 func make_possible_places():
-	var possible_places = []
+	var possible_places : Array[Place]
 	for name in Names:
 		possible_places.append(Place.new(name, -1))
 	return possible_places
@@ -37,7 +37,7 @@ class MapBuilder:
 	
 	func build_map(number_of_stops: int):
 		var counter = 0
-		var map = []
+		var map : Array[Place]
 		while counter < number_of_stops:
 			var selected_index = randi() % possible_places.size()
 			if possible_places[selected_index].position == -1:
@@ -83,7 +83,7 @@ class Place:
 		return position
 
 class PlaceRange:
-	var from: Place
+	var from: Place 
 	var to: Place
 	
 	func _init(_from, _to):

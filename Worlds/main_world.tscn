@@ -110,4 +110,3 @@ script = ExtResource("15_hpppf")
 
 [editable path="PlayerCamera/CanvasLayer/Interface"]
 [editable path="PlayerCamera/CanvasLayer/Interface/Timer"]
-[editable path="PlayerCamera/CanvasLayer/Interface/Score"]

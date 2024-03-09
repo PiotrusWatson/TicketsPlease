@@ -1,4 +1,4 @@
-extends Label
+extends Node2D
 
 @export var timerStatus = 1
 # Timer Statuses
@@ -9,7 +9,7 @@ var frameRate = 0.0
 @export var timerCountdownMinutes = 0
 @export var timerCountdownSeconds = 0
 var timerCountdownFrames = 0
-
+@onready var timer_label = $TimerTime
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,15 +28,15 @@ func _process(delta):
 			timerCountdownSeconds = 59
 			timerCountdownMinutes -= 1
 		if timerCountdownSeconds < 10:
-			text = str(timerCountdownMinutes) + ":0" + str(timerCountdownSeconds)
+			timer_label.text = str(timerCountdownMinutes) + ":0" + str(timerCountdownSeconds)
 		else:
-			text = str(timerCountdownMinutes) + ":" + str(timerCountdownSeconds)
+			timer_label.text = str(timerCountdownMinutes) + ":" + str(timerCountdownSeconds)
 	
 	if timerCountdownMinutes < 0:
 		timerCountdownMinutes = 0
 		timerCountdownSeconds = 0
 		timerStatus = 0
-		text = "Times up!"
+		timer_label.text = "Times up!"
 		#text = str(timerCountdownMinutes) + ":0" + str(timerCountdownSeconds)
 		TimesUp.emit()
 	pass
