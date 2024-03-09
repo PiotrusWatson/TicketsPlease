@@ -20,7 +20,7 @@ run/stretch/mode="viewport"
 
 [autoload]
 
-PlaceNames="*res://Scripts/Places.gd"
+Globals="*res://Scripts/Places.gd"
 
 [display]
 

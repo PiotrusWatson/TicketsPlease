@@ -1,12 +1,160 @@
 extends Node
 
-var Names = ["Fakeplace", "Notareal", "Bimbleby", 
-	"Shepherds Crease", "Sprunton", "Kabmeelington", 
-	"Thankful and be Rested",  "Bromp"]
+enum PossibleBadPositions{BAD_FROM, BAD_TO, BAD_BOTH}
 
-func MakeDate():
-	var dayCalc = (randi() % 29) + 1
-	var monthCalc = (randi() % 11) + 1
+
+class Date:
+	var day : int
+	var month : int
 	
-	var _displayOutput = str(dayCalc) + "-" + str(monthCalc) + "-24" 
-	pass
+	func _init(_day, _month):
+		day = _day
+		month = _month
+		
+	func equals(otherDate: Date):
+		return otherDate.day == day and otherDate.month == month
+	func _to_string():
+		return str(day) + "-" + str(month) + "-24" 
+
+
+var Names = ["Bimbleby", "Shepherds Crease", "Sprunton", "Kabmeelington", 
+	"Thankful and be Rested",  "Bromp", "Fruntlidge Wells",
+	"Wimble", "Crundridge", "Frollop", "Tentleworth", "Crim"]
+
+class MapBuilder:
+	var possible_places: Array[Place]
+	var date_builder: DateBuilder
+	var place_range_builder: PlaceRangeBuilder
+	func _init(names: Array[String], _place_range_builder: PlaceRangeBuilder):
+		for name in names:
+			possible_places.append(Place.new(name, -1))
+		date_builder = DateBuilder.new()
+		place_range_builder = _place_range_builder
+	
+	func build_map(number_of_stops: int):
+		var counter = 0
+		var map = []
+		while counter < number_of_stops:
+			var selected_index = randi() % possible_places.size()
+			if possible_places[selected_index].position == -1:
+				possible_places[selected_index].position = counter
+				counter += 1
+			map.append(possible_places[selected_index])
+		return map
+	
+	func generate_incorrect_ticket(current_date: Date):
+		var bad_place = randi_range(0, 2)
+		if bad_place == 0:
+			var date = current_date
+			while date.equals(current_date):
+				date = date_builder.GenerateDate()
+			return Ticket.new(date, place_range_builder.generate_correct_range())
+		else:
+			return Ticket.new(current_date, place_range_builder.generate_bad_range())
+				
+	
+			
+class Place:
+	var name: String
+	var position: int
+	
+	func _init(_name, _position):
+		name = _name
+		position = _position
+	
+	func equals(otherPlace: Place):
+		return otherPlace.position - position
+		
+	func _to_string():
+		return name
+	func get_position():
+		return position
+
+class PlaceRange:
+	var from: Place
+	var to: Place
+	
+	func _init(_from, _to):
+		from = _from
+		to = _to
+	
+	func is_in_range(place : Place):
+		if from.position == -1 or to.position == -1:
+			return false
+		var ahead_of_from = from.equals(place) >= 0
+		var before_to = to.equals(place) <= 0
+		return ahead_of_from and before_to
+		
+class Ticket:
+	var from_and_to: PlaceRange
+	var date: Date
+	
+	func _init(_date, _place_range):
+		date = _date
+		from_and_to = _place_range
+	
+	func is_correct(todays_date, next_destination):
+		return todays_date.equals(date) and from_and_to.is_in_range(next_destination)
+
+class CorrectDetails:
+	var date: Date
+	var map: Array[Place]
+	var current_stop: Place
+	var place_range_builder: PlaceRangeBuilder
+	
+	func _init(_date: Date, _map: Array[Place], _current_stop, _place_range_builder):
+		date = _date
+		map = _map
+		current_stop = _current_stop
+		place_range_builder = _place_range_builder
+	
+	
+			
+	func GenerateCorrectTicket():
+		var place_range = place_range_builder.generate_correct_range()
+		return Ticket.new(date, place_range)
+		
+		
+class DateBuilder:
+	func GenerateDate():
+		var dayCalc = (randi() % 29) + 1
+		var monthCalc = (randi() % 11) + 1
+		return Date.new(dayCalc, monthCalc)
+	
+
+class PlaceRangeBuilder:
+	var map: Array[Place]
+	var current_stop: Place
+	var all_stops: Array[Place]
+	
+	func _init(_map: Array[Place], _current_stop: Place, _all_stops: Array[Place]):
+		map = _map
+		current_stop = _current_stop
+	func pick_stop_before_current():
+		if current_stop.position == 0:
+			return current_stop
+		else:
+			return map[randi() % (current_stop.position + 1)]
+			
+	func pick_stop_after_current():
+		return map[current_stop.position + randi() % (map.size() - current_stop.position)]
+
+	func generate_correct_range():
+		return PlaceRange.new(pick_stop_before_current(), pick_stop_after_current())
+
+	func find_bad_stop():
+		var current_position = 0
+		var bad_stop = null
+		while current_position != -1:
+			bad_stop = all_stops[randi() % all_stops.size()]
+			current_position = bad_stop.position
+		return bad_stop
+	
+	func generate_bad_range():
+		var bad_choice = PossibleBadPositions.keys()[randi() % PossibleBadPositions.size()]
+		if bad_choice == PossibleBadPositions.BAD_FROM:
+			return PlaceRange.new(find_bad_stop(), pick_stop_after_current())
+		elif bad_choice == PossibleBadPositions.BAD_TO:
+			return PlaceRange.new(pick_stop_before_current(), find_bad_stop())
+		else:
+			return PlaceRange.new(find_bad_stop(), find_bad_stop())
