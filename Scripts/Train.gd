@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var thing_placer = $Carriages
 @export var carriage_number = 10
+signal placed_carriages(y_pos)
 var last_carriage = null
 var carriages: Array[PhysicsBody2D]
 # Called when the node enters the scene tree for the first time.
@@ -20,3 +21,4 @@ func place_carriages():
 		if carriage.has_method("setup"):
 			carriage.setup()
 		carriages.append(carriage)
+	placed_carriages.emit(carriages[0].show_size().y / 2)
