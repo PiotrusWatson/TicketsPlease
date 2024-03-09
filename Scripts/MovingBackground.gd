@@ -13,6 +13,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	offset.x -= amount_to_move * delta
-	
-	if offset.x >= float(startingPosition.x * 2):
-		offset.x = float(startingPosition.x)
