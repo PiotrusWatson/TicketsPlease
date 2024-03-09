@@ -1,10 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://cp1rsqd8vb2sp"]
+[gd_scene load_steps=30 format=3 uid="uid://cp1rsqd8vb2sp"]
 
 [ext_resource type="Script" path="res://Scripts/CenterOfScreen.gd" id="1_2sivv"]
-[ext_resource type="Script" path="res://Scripts/GlobalTimer.gd" id="2_35vbt"]
 [ext_resource type="PackedScene" uid="uid://bbwpbug2x4rm0" path="res://Scenes/Components/timer.tscn" id="2_lgn25"]
-[ext_resource type="PackedScene" uid="uid://dounykx4a0epd" path="res://Scenes/Components/score.tscn" id="3_tup63"]
-[ext_resource type="Script" path="res://Scripts/BigTicket.gd" id="5_ibe0p"]
+[ext_resource type="Script" path="res://Scripts/BigTicket.gd" id="3_kx3os"]
 [ext_resource type="Texture2D" uid="uid://buq1o0dt711gv" path="res://Sprites/TicketBig.png" id="6_1hmsu"]
 [ext_resource type="Texture2D" uid="uid://b25hjv6em0vsc" path="res://Sprites/PixelTrain/sheet_train_v18.png" id="6_eokdc"]
 [ext_resource type="Script" path="res://Scripts/BigTicketManager.gd" id="7_0wpf7"]
@@ -151,8 +149,8 @@ script = ExtResource("1_2sivv")
 
 [node name="GlobalTimer" type="Timer" parent="."]
 wait_time = 300.0
+one_shot = true
 autostart = true
-script = ExtResource("2_35vbt")
 
 [node name="Timer" parent="." instance=ExtResource("2_lgn25")]
 position = Vector2(450, -300)
@@ -163,18 +161,10 @@ offset_top = -10.0
 offset_right = 61.0
 offset_bottom = 13.0
 
-[node name="Score" parent="." instance=ExtResource("3_tup63")]
-position = Vector2(450, -260)
-
-[node name="ScoreCounter" parent="Score" index="1"]
-offset_left = 20.0
-offset_top = -10.0
-offset_right = 80.0
-offset_bottom = 13.0
-
 [node name="BigTicketPath" type="Path2D" parent="."]
 position = Vector2(0, 550)
 curve = SubResource("Curve2D_amoas")
+script = ExtResource("3_kx3os")
 
 [node name="BigTicketPathFollow" type="PathFollow2D" parent="BigTicketPath"]
 rotation = -1.5708
@@ -183,7 +173,6 @@ loop = false
 
 [node name="BigTicket" type="Node2D" parent="BigTicketPath/BigTicketPathFollow"]
 rotation = 1.5708
-script = ExtResource("5_ibe0p")
 
 [node name="BigTicketImage" type="Sprite2D" parent="BigTicketPath/BigTicketPathFollow/BigTicket"]
 texture = ExtResource("6_1hmsu")
@@ -311,4 +300,3 @@ offset_bottom = -277.0
 text = "Destination"
 
 [editable path="Timer"]
-[editable path="Score"]

@@ -1,6 +1,5 @@
-extends Label
+extends Node2D
 
-@export var timerStatus = 1
 # Timer Statuses
 # 0 = Paused
 # 1 = Active
@@ -8,36 +7,25 @@ extends Label
 var frameRate = 0.0
 @export var timerCountdownMinutes = 0
 @export var timerCountdownSeconds = 0
-var timerCountdownFrames = 0
-
-
+@onready var timer_label = $TimerTime
+@onready var timer = $Timer
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	frameRate = Performance.get_monitor(Performance.TIME_FPS)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if timerStatus == 1:
-		timerCountdownFrames -= delta
-		if timerCountdownFrames <= 0:
-			timerCountdownFrames = frameRate
-			timerCountdownSeconds -= 1
-		if timerCountdownSeconds <= 0:
-			timerCountdownSeconds = 59
-			timerCountdownMinutes -= 1
-		if timerCountdownSeconds < 10:
-			text = str(timerCountdownMinutes) + ":0" + str(timerCountdownSeconds)
-		else:
-			text = str(timerCountdownMinutes) + ":" + str(timerCountdownSeconds)
 	
-	if timerCountdownMinutes < 0:
-		timerCountdownMinutes = 0
-		timerCountdownSeconds = 0
-		timerStatus = 0
-		text = "Times up!"
-		#text = str(timerCountdownMinutes) + ":0" + str(timerCountdownSeconds)
+	var seconds = int(timer.time_left) % 60
+	var minutes = int(timer.time_left) / 60
+	if seconds < 10:
+		timer_label.text = str(minutes) + ":0" + str(seconds)
+	else:
+		timer_label.text = str(minutes) + ":" + str(seconds)
+	
+
+		
 		TimesUp.emit()
 	pass
 

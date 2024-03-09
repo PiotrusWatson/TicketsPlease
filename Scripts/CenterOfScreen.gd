@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var windowSize = DisplayServer.window_get_size()
-
+@onready var big_ticket = $BigTicketPath
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position.x = windowSize.x / 2
@@ -16,3 +16,8 @@ func _process(_delta):
 func WindowSizeChanges():
 	position.x = windowSize.x / 2
 	position.y = windowSize.y / 2
+func show_ticket(ticket):
+	big_ticket.ShowTicket(ticket)
+
+func hide_ticket():
+	big_ticket.HideTicket()

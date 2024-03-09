@@ -125,4 +125,3 @@ carriage_number = 2
 
 [editable path="PlayerCamera/CanvasLayer/Interface"]
 [editable path="PlayerCamera/CanvasLayer/Interface/Timer"]
-[editable path="PlayerCamera/CanvasLayer/Interface/Score"]

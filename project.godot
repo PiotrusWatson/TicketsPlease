@@ -20,7 +20,7 @@ run/stretch/mode="viewport"
 
 [autoload]
 
-PlaceNames="*res://Scripts/TicketData.gd"
+Globals="*res://Scripts/Globals.gd"
 
 [display]
 

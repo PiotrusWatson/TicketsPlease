@@ -1,7 +1,7 @@
-extends Node2D
+extends Path2D
 
-@onready var path = $"../.."
-@onready var pathFollow = $".."
+
+@onready var pathFollow = $BigTicketPathFollow
 
 var showTicket = false
 
@@ -12,7 +12,7 @@ var pathLength = 0 # Length of the path
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
-	pathLength = path.get_curve().get_baked_length()
+	pathLength = get_curve().get_baked_length()
 	pass # Replace with function body.
 
 
@@ -25,7 +25,7 @@ func _process(delta):
 		pathFollow.progress += t + 15
 	pass
 
-func ShowTicket(): 
+func ShowTicket(ticket): 
 	showTicket = true
 	visible = true
 	

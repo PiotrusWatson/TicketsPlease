@@ -14,7 +14,6 @@ func _ready():
 	if max_to_spawn > spawn_points.size():
 		max_to_spawn = spawn_points.size()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
