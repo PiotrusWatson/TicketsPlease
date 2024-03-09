@@ -9,9 +9,11 @@ var contractTextX = false
 var expandTextY = true
 var contractTextY = false
 
-@export var rotationLeftThreshold = 180
-@export var rotationRightThreshold = 180
-@export var rotationRate = 0.0
+@export var rotationLeftThresholdDeg = -5
+@export var rotationRightThresholdDeg = 5
+var rotationLeftThresholdRad = deg_to_rad(rotationLeftThresholdDeg)
+var rotationRightThresholdRad = deg_to_rad(rotationRightThresholdDeg)
+@export var rotationRate = 0.001
 var rotateLeft = true
 var rotateRight = false
 
@@ -27,10 +29,10 @@ func _process(delta):
 		rotation += randf() * rotationRate
 	if rotateRight:
 		rotation -= randf() * rotationRate
-	if rotation >= rotationLeftThreshold:
+	if rotation <= rotationLeftThresholdRad:
 		rotateLeft = true
 		rotateRight = false
-	if rotation <= rotationRightThreshold:
+	if rotation >= rotationRightThresholdRad:
 		rotateLeft = false
 		rotateRight = true
 
