@@ -39,7 +39,11 @@ var Names = ["Bimbleby", "Shepherds Crease", "Sprunton",
 "Ballerdunk",
 "Bert",
 "Loch Thador",
-"Stiffer's Hollow"]
+"Stiffer's Hollow",
+"Chortle",
+"Swimpool",
+"Southnorth",
+"West Southnorth"]
 
 func make_current_stop(map: Array[Place]):
 	return map[randi() % (map.size() - 1)]
