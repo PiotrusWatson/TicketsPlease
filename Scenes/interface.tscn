@@ -1,9 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://cp1rsqd8vb2sp"]
+[gd_scene load_steps=30 format=3 uid="uid://cp1rsqd8vb2sp"]
 
 [ext_resource type="Script" path="res://Scripts/CenterOfScreen.gd" id="1_2sivv"]
 [ext_resource type="PackedScene" uid="uid://bbwpbug2x4rm0" path="res://Scenes/Components/timer.tscn" id="2_lgn25"]
 [ext_resource type="Script" path="res://Scripts/BigTicket.gd" id="3_kx3os"]
-[ext_resource type="Script" path="res://Scripts/UpdateTimer.gd" id="3_vfehp"]
 [ext_resource type="Texture2D" uid="uid://buq1o0dt711gv" path="res://Sprites/TicketBig.png" id="6_1hmsu"]
 [ext_resource type="Texture2D" uid="uid://b25hjv6em0vsc" path="res://Sprites/PixelTrain/sheet_train_v18.png" id="6_eokdc"]
 [ext_resource type="Script" path="res://Scripts/BigTicketManager.gd" id="7_0wpf7"]
@@ -155,8 +154,6 @@ autostart = true
 
 [node name="Timer" parent="." instance=ExtResource("2_lgn25")]
 position = Vector2(450, -300)
-script = ExtResource("3_vfehp")
-timerStatus = 1
 
 [node name="TimerTime" parent="Timer" index="1"]
 offset_left = 20.0
