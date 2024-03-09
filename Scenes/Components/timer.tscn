@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbwpbug2x4rm0"]
+
+[ext_resource type="Texture2D" uid="uid://dhywbu4x8c8gp" path="res://Sprites/Timer.png" id="1_0t4vm"]
+[ext_resource type="Script" path="res://Scripts/UpdateTimer.gd" id="2_bykul"]
+
+[node name="TimerWrapper" type="Node2D"]
+position = Vector2(451, -301)
+
+[node name="ClockImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_0t4vm")
+
+[node name="TimerTime" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "00:00"
+script = ExtResource("2_bykul")
+timerCountdownSeconds = 10

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dounykx4a0epd"]
+
+[ext_resource type="Texture2D" uid="uid://brdpbgoeis24i" path="res://Sprites/TicketSmall.png" id="1_ljg6g"]
+[ext_resource type="Script" path="res://Scripts/UpdateScore.gd" id="2_1ovxe"]
+
+[node name="ScoreWrapper" type="Node2D"]
+position = Vector2(452, -259)
+
+[node name="TicketImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_ljg6g")
+
+[node name="ScoreCounter" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "000,000"
+script = ExtResource("2_1ovxe")
