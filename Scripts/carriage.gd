@@ -19,8 +19,6 @@ func show_size():
 	return image.calculate_size()
 	
 func lift_carriage():
-	velocity.y = -200
-	move_and_slide()
+	pass
 
-func attach_last_carriage(carriage):
-	connector.node_b = carriage.get_path()
+

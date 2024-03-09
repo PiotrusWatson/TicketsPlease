@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf6n7rjm2t0xn"]
+[gd_scene load_steps=13 format=3 uid="uid://bf6n7rjm2t0xn"]
 
 [ext_resource type="Texture2D" uid="uid://b5t316b30mkgx" path="res://Sprites/PixelTrain/carriage_v18_car1.png" id="1_j481s"]
 [ext_resource type="Script" path="res://Scripts/carriage.gd" id="1_q66aa"]
 [ext_resource type="Script" path="res://Scenes/sprite_helper.gd" id="3_dga6r"]
 [ext_resource type="PackedScene" uid="uid://bxftaanim0mhs" path="res://Scenes/Components/random_spawner.tscn" id="3_u45o4"]
 [ext_resource type="PackedScene" uid="uid://crtcgftobb0q3" path="res://Scenes/passenger.tscn" id="4_v2p8k"]
+[ext_resource type="PackedScene" uid="uid://blf5rql84yn7j" path="res://Scenes/Gojira/finger.tscn" id="6_jo2cj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7012"]
 size = Vector2(800, 64)
@@ -98,6 +99,21 @@ shape = SubResource("SegmentShape2D_iuq7v")
 [node name="LeftStep" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_eg3rm")
 
-[node name="Connector" type="PinJoint2D" parent="."]
-position = Vector2(-513, 84)
-node_a = NodePath("..")
+[node name="Hand" type="Node2D" parent="."]
+
+[node name="Finger" parent="Hand" instance=ExtResource("6_jo2cj")]
+position = Vector2(-280, -125)
+scale = Vector2(1.5, 1.5)
+
+[node name="Finger2" parent="Hand" instance=ExtResource("6_jo2cj")]
+position = Vector2(-36, -134)
+scale = Vector2(1.5, 1.5)
+
+[node name="Finger3" parent="Hand" instance=ExtResource("6_jo2cj")]
+position = Vector2(196, -130)
+scale = Vector2(1.5, 1.5)
+
+[node name="Thumb" parent="Hand" instance=ExtResource("6_jo2cj")]
+position = Vector2(84, 147)
+rotation = 3.14159
+scale = Vector2(1.7, 1.7)
