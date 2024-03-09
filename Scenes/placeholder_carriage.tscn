@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf6n7rjm2t0xn"]
+[gd_scene load_steps=12 format=3 uid="uid://bf6n7rjm2t0xn"]
 
 [ext_resource type="Texture2D" uid="uid://b5t316b30mkgx" path="res://Sprites/PixelTrain/carriage_v18_car1.png" id="1_j481s"]
 [ext_resource type="Script" path="res://Scripts/carriage.gd" id="1_q66aa"]
@@ -7,13 +7,32 @@
 [ext_resource type="PackedScene" uid="uid://crtcgftobb0q3" path="res://Scenes/passenger.tscn" id="4_v2p8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7012"]
-size = Vector2(877, 64)
+size = Vector2(800, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kd6l3"]
+size = Vector2(94.5, 49.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sbxpw"]
+a = Vector2(-456, 65)
+b = Vector2(-399, 13)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gfjlk"]
+a = Vector2(397, 13)
+b = Vector2(476, 70)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_iuq7v"]
+a = Vector2(380, 22)
+b = Vector2(397, 13)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_eg3rm"]
+a = Vector2(-373, 22)
+b = Vector2(-399, 13)
 
 [node name="PlaceholderCarriage" type="StaticBody2D"]
 script = ExtResource("1_q66aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 48)
+position = Vector2(-1, 48)
 shape = SubResource("RectangleShape2D_c7012")
 
 [node name="Image" type="Sprite2D" parent="."]
@@ -58,3 +77,23 @@ position = Vector2(400, 0)
 [node name="RandomSpawner" parent="." node_paths=PackedStringArray("container_of_spawns") instance=ExtResource("3_u45o4")]
 thing_to_spawn = ExtResource("4_v2p8k")
 container_of_spawns = NodePath("../SpawnPoints")
+
+[node name="RightBuffer" type="CollisionShape2D" parent="."]
+position = Vector2(467.75, 88.75)
+shape = SubResource("RectangleShape2D_kd6l3")
+
+[node name="LeftBuffer" type="CollisionShape2D" parent="."]
+position = Vector2(-478, 88)
+shape = SubResource("RectangleShape2D_kd6l3")
+
+[node name="LeftStairs" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_sbxpw")
+
+[node name="RightStairs" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_gfjlk")
+
+[node name="RightStep" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_iuq7v")
+
+[node name="LeftStep" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_eg3rm")
