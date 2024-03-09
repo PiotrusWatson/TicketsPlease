@@ -1,8 +1,8 @@
 [gd_scene load_steps=27 format=3 uid="uid://bblxhlnrbhb6k"]
 
-[ext_resource type="Script" path="res://Worlds/Conductor.gd" id="1_wky17"]
+[ext_resource type="Script" path="res://Scripts/Conductor.gd" id="1_wky17"]
 [ext_resource type="Texture2D" uid="uid://b0ovr01fymc47" path="res://Sprites/Officer_sheet_unboxed_0.png" id="2_i5fwl"]
-[ext_resource type="Script" path="res://Worlds/Mover.gd" id="3_55tjy"]
+[ext_resource type="PackedScene" uid="uid://chw16hqbr08sw" path="res://Scenes/Components/mover.tscn" id="3_mgjkk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8q30f"]
 height = 64.0
@@ -185,5 +185,4 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_u8lds")
 animation = &"run"
 
-[node name="Mover" type="Node2D" parent="."]
-script = ExtResource("3_55tjy")
+[node name="Mover" parent="." instance=ExtResource("3_mgjkk")]
