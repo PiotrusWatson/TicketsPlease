@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=9 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://cw5b3848cywp2" path="res://Scenes/placeholder_carriage.tscn" id="1_lgeng"]
@@ -7,6 +7,20 @@
 [ext_resource type="Script" path="res://Scripts/ticket_checking_ui.gd" id="2_x1h41"]
 [ext_resource type="Script" path="res://Scripts/Train.gd" id="5_poxl3"]
 [ext_resource type="PackedScene" uid="uid://cp1rsqd8vb2sp" path="res://Scenes/interface.tscn" id="7_qtk3u"]
+
+[sub_resource type="GDScript" id="GDScript_6v55p"]
+script/source = "extends PathFollow2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [node name="World" type="Node2D"]
 texture_filter = 1
@@ -19,6 +33,10 @@ thing_to_follow = NodePath("../Conductor")
 [node name="CanvasLayer" type="CanvasLayer" parent="PlayerCamera"]
 
 [node name="Interface" parent="PlayerCamera/CanvasLayer" instance=ExtResource("7_qtk3u")]
+
+[node name="BigTicketPathFollow" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath" index="0"]
+cubic_interp = false
+script = SubResource("GDScript_6v55p")
 
 [node name="TicketCheckingPLaceholder" type="GridContainer" parent="PlayerCamera/CanvasLayer/Interface"]
 visible = false
