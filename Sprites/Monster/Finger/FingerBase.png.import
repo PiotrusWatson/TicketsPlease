@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mnve2313hhfi"
-path="res://.godot/imported/FingerBase.png-6fd65b367b1785e8c1383c118944e1e7.ctex"
+path="res://.godot/imported/FingerBase.png-e5ec2fcc285f6e00cc7509a203e68e42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/WIP/FingerBase.png"
-dest_files=["res://.godot/imported/FingerBase.png-6fd65b367b1785e8c1383c118944e1e7.ctex"]
+source_file="res://Sprites/Monster/Finger/FingerBase.png"
+dest_files=["res://.godot/imported/FingerBase.png-e5ec2fcc285f6e00cc7509a203e68e42.ctex"]
 
 [params]
 

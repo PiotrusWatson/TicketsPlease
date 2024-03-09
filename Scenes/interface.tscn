@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://cp1rsqd8vb2sp"]
+[gd_scene load_steps=32 format=3 uid="uid://cp1rsqd8vb2sp"]
 
 [ext_resource type="Script" path="res://Scripts/CenterOfScreen.gd" id="1_2sivv"]
 [ext_resource type="PackedScene" uid="uid://bbwpbug2x4rm0" path="res://Scenes/Components/timer.tscn" id="2_lgn25"]
 [ext_resource type="Script" path="res://Scenes/GlobalTimer.gd" id="2_ojnck"]
 [ext_resource type="PackedScene" uid="uid://dounykx4a0epd" path="res://Scenes/Components/score.tscn" id="3_tup63"]
+[ext_resource type="Script" path="res://Scenes/BigTicket.gd" id="5_8perv"]
 [ext_resource type="Texture2D" uid="uid://buq1o0dt711gv" path="res://Sprites/TicketBig.png" id="6_1hmsu"]
 [ext_resource type="Texture2D" uid="uid://b25hjv6em0vsc" path="res://Sprites/PixelTrain/sheet_train_v18.png" id="6_eokdc"]
 [ext_resource type="Script" path="res://Scenes/TrainSpritePath.gd" id="6_w3qy6"]
@@ -169,6 +170,7 @@ loop = false
 
 [node name="BigTicket" type="Node2D" parent="BigTicketPath/BigTicketPathFollow"]
 rotation = 1.5708
+script = ExtResource("5_8perv")
 
 [node name="BigTicketImage" type="Sprite2D" parent="BigTicketPath/BigTicketPathFollow/BigTicket"]
 texture = ExtResource("6_1hmsu")
@@ -190,6 +192,7 @@ offset_top = 24.0
 offset_right = -112.0
 offset_bottom = 47.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "Adult Standard Class"
 
 [node name="FlavourGenericText" type="Label" parent="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour"]
@@ -277,15 +280,8 @@ script = ExtResource("7_qltbh")
 [node name="SmallTrain" type="AnimatedSprite2D" parent="TrainTravel/TrainSpritePath/PathFollow2D"]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ipm8o")
-frame_progress = 0.0233799
+frame_progress = 0.841502
 script = ExtResource("7_n0fo5")
-
-[node name="Destination" type="Label" parent="TrainTravel"]
-offset_left = 231.0
-offset_top = -300.0
-offset_right = 321.0
-offset_bottom = -277.0
-text = "Destination"
 
 [node name="Origin" type="Label" parent="TrainTravel"]
 offset_left = -324.0
@@ -294,9 +290,12 @@ offset_right = -276.0
 offset_bottom = -278.0
 text = "Origin"
 
-[node name="NextStop" type="Label" parent="TrainTravel"]
-offset_left = -39.0
-offset_top = -298.0
-offset_right = 37.0
-offset_bottom = -275.0
-text = "Next Stop"
+[node name="Destination" type="Label" parent="TrainTravel"]
+offset_left = 231.0
+offset_top = -300.0
+offset_right = 321.0
+offset_bottom = -277.0
+text = "Destination"
+
+[editable path="Timer"]
+[editable path="Score"]
