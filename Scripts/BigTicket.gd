@@ -27,3 +27,6 @@ func _process(delta):
 
 func ShowTicket(): 
 	visible = true
+	
+func HideTicket(): 
+	visible = false

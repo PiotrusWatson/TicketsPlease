@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf6n7rjm2t0xn"]
+[gd_scene load_steps=12 format=3 uid="uid://cw5b3848cywp2"]
 
 [ext_resource type="Texture2D" uid="uid://b5t316b30mkgx" path="res://Sprites/PixelTrain/carriage_v18_car1.png" id="1_j481s"]
 [ext_resource type="Script" path="res://Scripts/carriage.gd" id="1_q66aa"]
-[ext_resource type="Script" path="res://Scenes/sprite_helper.gd" id="3_dga6r"]
+[ext_resource type="Script" path="res://Scripts/sprite_helper.gd" id="3_0va5r"]
 [ext_resource type="PackedScene" uid="uid://bxftaanim0mhs" path="res://Scenes/Components/random_spawner.tscn" id="3_u45o4"]
-[ext_resource type="PackedScene" uid="uid://crtcgftobb0q3" path="res://Scenes/passenger.tscn" id="4_v2p8k"]
+[ext_resource type="PackedScene" path="res://Scenes/passenger.tscn" id="4_v2p8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7012"]
 size = Vector2(800, 64)
@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_c7012")
 [node name="Image" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
 texture = ExtResource("1_j481s")
-script = ExtResource("3_dga6r")
+script = ExtResource("3_0va5r")
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 
