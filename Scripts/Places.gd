@@ -21,15 +21,19 @@ var Names = ["Bimbleby", "Shepherds Crease", "Sprunton", "Kabmeelington",
 	"Thankful and be Rested",  "Bromp", "Fruntlidge Wells",
 	"Wimble", "Crundridge", "Frollop", "Tentleworth", "Crim"]
 
+func make_current_stop(map: Array[Place]):
+	return map[randi() % (map.size() - 1)]
+func make_possible_places():
+	var possible_places = []
+	for name in Names:
+		possible_places.append(Place.new(name, -1))
+	return possible_places
+	
 class MapBuilder:
 	var possible_places: Array[Place]
-	var date_builder: DateBuilder
-	var place_range_builder: PlaceRangeBuilder
-	func _init(names: Array[String], _place_range_builder: PlaceRangeBuilder):
-		for name in names:
-			possible_places.append(Place.new(name, -1))
-		date_builder = DateBuilder.new()
-		place_range_builder = _place_range_builder
+
+	func _init(_possible_places: Array[Place]):
+		possible_places = _possible_places
 	
 	func build_map(number_of_stops: int):
 		var counter = 0
@@ -42,7 +46,18 @@ class MapBuilder:
 			map.append(possible_places[selected_index])
 		return map
 	
-	func generate_incorrect_ticket(current_date: Date):
+	
+				
+class IncorrectTicketBuilder:
+	var current_date : Date
+	var place_range_builder: PlaceRangeBuilder
+	var date_builder: DateBuilder
+	func _init(_current_date: Date, _place_range_builder: PlaceRangeBuilder):
+		current_date = _current_date
+		place_range_builder = _place_range_builder
+		date_builder = DateBuilder.new()
+	
+	func generate_incorrect_ticket():
 		var bad_place = randi_range(0, 2)
 		if bad_place == 0:
 			var date = current_date
@@ -51,9 +66,6 @@ class MapBuilder:
 			return Ticket.new(date, place_range_builder.generate_correct_range())
 		else:
 			return Ticket.new(current_date, place_range_builder.generate_bad_range())
-				
-	
-			
 class Place:
 	var name: String
 	var position: int
