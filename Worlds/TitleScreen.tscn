@@ -1,28 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://brbwkwvpq4hns"]
+[gd_scene load_steps=6 format=3 uid="uid://brbwkwvpq4hns"]
 
+[ext_resource type="Texture2D" uid="uid://belyisyu23bfc" path="res://Sprites/windows-xp-bliss-4k-lu-1920x1080.jpg" id="1_adf5v"]
 [ext_resource type="Texture2D" uid="uid://buq1o0dt711gv" path="res://Sprites/TicketBig.png" id="1_t61x7"]
 [ext_resource type="Script" path="res://Scripts/TicketText.gd" id="2_5vl5s"]
+[ext_resource type="Script" path="res://Worlds/StartButton.gd" id="3_7iovx"]
+[ext_resource type="Script" path="res://Worlds/Alight.gd" id="3_p0q22"]
 
 [node name="TitleScreen" type="Node2D"]
-position = Vector2(594, 300.5)
+position = Vector2(576, 288)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Bliss" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(576, 288)
+texture = ExtResource("1_adf5v")
+
 [node name="Ticket" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(594, 300.5)
+position = Vector2(576, 288)
 texture = ExtResource("1_t61x7")
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Ticket"]
+offset_left = -159.0
+offset_top = 111.5
+offset_right = 176.0
+offset_bottom = 186.5
+theme_override_font_sizes/font_size = 48
+text = "Buy the Ticket"
+script = ExtResource("3_7iovx")
+
+[node name="CreditsButton" type="Button" parent="CanvasLayer/Ticket"]
+offset_left = 156.0
+offset_top = -186.5
+offset_right = 288.0
+offset_bottom = -128.5
+theme_override_font_sizes/font_size = 36
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Ticket"]
+offset_left = -277.0
+offset_top = -186.5
+offset_right = -168.0
+offset_bottom = -128.5
+theme_override_font_sizes/font_size = 36
+text = "Alight
+"
+script = ExtResource("3_p0q22")
 
 [node name="TicketText" type="Node2D" parent="CanvasLayer/Ticket"]
 script = ExtResource("2_5vl5s")
 scaleUpperThreshold = Vector2(1.05, 1.5)
 scaleLowerThreshold = Vector2(0.95, 0.5)
 
-[node name="Label" type="Label" parent="CanvasLayer/Ticket/TicketText"]
-offset_left = -277.0
-offset_top = -67.0
-offset_right = 293.0
-offset_bottom = 40.0
+[node name="TitleText" type="Label" parent="CanvasLayer/Ticket/TicketText"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 78
 text = "Tickets, Please!"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/Ticket/StartButton" to="CanvasLayer/Ticket/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Ticket/QuitButton" to="CanvasLayer/Ticket/QuitButton" method="_on_pressed"]
