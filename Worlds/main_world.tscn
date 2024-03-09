@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=6 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bf6n7rjm2t0xn" path="res://Scenes/placeholder_train.tscn" id="1_lgeng"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
 [ext_resource type="Script" path="res://Scripts/ticket_checking_ui.gd" id="2_x1h41"]
-[ext_resource type="PackedScene" uid="uid://crtcgftobb0q3" path="res://Scenes/passenger.tscn" id="4_bnmd7"]
 
 [sub_resource type="Theme" id="Theme_vyfct"]
 /font_sizes/FONT = 1000
@@ -33,5 +32,3 @@ text = "PLACEHOLDER"
 texture_filter = 1
 
 [node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
-
-[node name="Passenger" parent="." instance=ExtResource("4_bnmd7")]
