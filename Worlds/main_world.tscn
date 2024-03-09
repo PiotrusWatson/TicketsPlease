@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/MovingBackground.gd" id="5_6dqpj"]
 [ext_resource type="Script" path="res://Scripts/Train.gd" id="5_poxl3"]
 [ext_resource type="PackedScene" uid="uid://cp1rsqd8vb2sp" path="res://Scenes/interface.tscn" id="7_qtk3u"]
-[ext_resource type="PackedScene" uid="uid://dounykx4a0epd" path="res://Scenes/Components/TicketCheck.tscn" id="8_7dlo1"]
+[ext_resource type="PackedScene" path="res://Scenes/Components/TicketCheck.tscn" id="8_7dlo1"]
 [ext_resource type="PackedScene" uid="uid://b4yus1rc87wlq" path="res://Scenes/Components/thing_placer.tscn" id="8_pe0my"]
 [ext_resource type="PackedScene" uid="uid://crooavq2kure6" path="res://Scenes/Components/Background/track.tscn" id="9_14sfv"]
 [ext_resource type="Script" path="res://Scripts/LoopingThing.gd" id="9_hi4ob"]
