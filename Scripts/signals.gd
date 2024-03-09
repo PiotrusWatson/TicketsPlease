@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var ui = $Camera2D/CanvasLayer/TicketCheckingPLaceholder
+@onready var ui = $PlayerCamera/CanvasLayer/TicketCheckingPLaceholder
 var passengers : Array[Node]
 # Called when the node enters the scene tree for the first time.
 func _ready():

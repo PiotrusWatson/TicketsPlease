@@ -36,6 +36,7 @@ func spawn_at_random_point():
 
 func spawn_all():
 	var spawn_count = 0
+	print(spawn_points[0].global_position)
 	while spawn_count < max_to_spawn:
 		if spawn_at_random_point():
 			spawn_count += 1

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxftaanim0mhs"]
 
-[ext_resource type="Script" path="res://Scenes/RandomSpawner.gd" id="1_w6ss7"]
+[ext_resource type="Script" path="res://Scripts/Components/RandomSpawner.gd" id="1_w6ss7"]
 
 [node name="RandomSpawner" type="Node"]
 script = ExtResource("1_w6ss7")
