@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/carriage.gd" id="1_q66aa"]
 [ext_resource type="Script" path="res://Scripts/sprite_helper.gd" id="3_gf4xh"]
 [ext_resource type="PackedScene" uid="uid://bxftaanim0mhs" path="res://Scenes/Components/random_spawner.tscn" id="3_u45o4"]
-[ext_resource type="PackedScene" uid="uid://crtcgftobb0q3" path="res://Scenes/passenger.tscn" id="4_v2p8k"]
+[ext_resource type="PackedScene" path="res://Scenes/passenger.tscn" id="4_v2p8k"]
 [ext_resource type="PackedScene" uid="uid://blf5rql84yn7j" path="res://Scenes/Gojira/finger.tscn" id="6_jo2cj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7012"]

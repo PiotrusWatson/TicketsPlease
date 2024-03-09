@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://belyisyu23bfc" path="res://Sprites/windows-xp-bliss-4k-lu-1920x1080.jpg" id="1_adf5v"]
 [ext_resource type="Texture2D" uid="uid://buq1o0dt711gv" path="res://Sprites/TicketBig.png" id="1_t61x7"]
 [ext_resource type="Script" path="res://Scripts/TicketText.gd" id="2_5vl5s"]
-[ext_resource type="Script" path="res://Worlds/StartButton.gd" id="3_7iovx"]
-[ext_resource type="Script" path="res://Worlds/Alight.gd" id="3_p0q22"]
+[ext_resource type="Script" path="res://Scripts/StartButton.gd" id="3_7iovx"]
+[ext_resource type="Script" path="res://Scripts/Alight.gd" id="3_p0q22"]
 
 [node name="TitleScreen" type="Node2D"]
 position = Vector2(576, 288)

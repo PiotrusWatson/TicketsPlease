@@ -1,18 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=16 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
 [ext_resource type="Script" path="res://Scripts/FollowSomething.gd" id="2_vhvwl"]
 [ext_resource type="Script" path="res://Scripts/ticket_checking_ui.gd" id="2_x1h41"]
 [ext_resource type="Texture2D" uid="uid://bqju8sh0icqll" path="res://Sprites/Free Pixel Art plataformer painted style/PNG/Mountains/Background.png" id="4_ryvvt"]
-[ext_resource type="Script" path="res://Worlds/MovingBackground.gd" id="5_6dqpj"]
+[ext_resource type="Script" path="res://Scripts/MovingBackground.gd" id="5_6dqpj"]
 [ext_resource type="Script" path="res://Scripts/Train.gd" id="5_poxl3"]
 [ext_resource type="Texture2D" uid="uid://b20cqrkqmfva0" path="res://Sprites/Free Pixel Art plataformer painted style/PNG/Mountains/Layer 4 anim1.png" id="7_3isv0"]
 [ext_resource type="PackedScene" uid="uid://cp1rsqd8vb2sp" path="res://Scenes/interface.tscn" id="7_qtk3u"]
 [ext_resource type="PackedScene" uid="uid://b4yus1rc87wlq" path="res://Scenes/Components/thing_placer.tscn" id="8_pe0my"]
 [ext_resource type="Texture2D" uid="uid://dvnyuuanwvfla" path="res://Sprites/Free Pixel Art plataformer painted style/PNG/Mountains/Layer 1 anim2.png" id="8_r754w"]
-[ext_resource type="PackedScene" uid="uid://crooavq2kure6" path="res://Scenes/Background/track.tscn" id="9_14sfv"]
-[ext_resource type="Script" path="res://Worlds/LoopingThing.gd" id="9_hi4ob"]
+[ext_resource type="PackedScene" uid="uid://crooavq2kure6" path="res://Scenes/Components/Background/track.tscn" id="9_14sfv"]
+[ext_resource type="Script" path="res://Scripts/LoopingThing.gd" id="9_hi4ob"]
+[ext_resource type="Script" path="res://Worlds/RailPositioner.gd" id="9_lf27q"]
 
 [sub_resource type="GDScript" id="GDScript_6v55p"]
 script/source = "extends PathFollow2D
@@ -53,33 +54,47 @@ offset_bottom = -284.0
 script = ExtResource("2_x1h41")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="PlayerCamera"]
+follow_viewport_enabled = true
 script = ExtResource("5_6dqpj")
 
-[node name="Background" type="ParallaxLayer" parent="PlayerCamera/ParallaxBackground"]
-motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(2470, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerCamera/ParallaxBackground/Background"]
-texture_filter = 1
+[node name="Sky" type="ParallaxLayer" parent="PlayerCamera/ParallaxBackground"]
+position = Vector2(0, -333)
 scale = Vector2(2.6, 2.6)
+motion_offset = Vector2(25, 0)
+motion_mirroring = Vector2(950, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerCamera/ParallaxBackground/Sky"]
+texture_filter = 1
 texture = ExtResource("4_ryvvt")
 
-[node name="CloserBackground" type="ParallaxLayer" parent="PlayerCamera/ParallaxBackground"]
-motion_scale = Vector2(0.7, 0.7)
-motion_mirroring = Vector2(2470, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerCamera/ParallaxBackground/CloserBackground"]
-texture_filter = 1
+[node name="BrownMountainsClouds" type="ParallaxLayer" parent="PlayerCamera/ParallaxBackground"]
+position = Vector2(0, -333)
 scale = Vector2(2.6, 2.6)
+motion_offset = Vector2(250, 0)
+motion_mirroring = Vector2(950, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerCamera/ParallaxBackground/BrownMountainsClouds"]
+texture_filter = 1
+texture = ExtResource("8_r754w")
+
+[node name="GreenMountainsClouds" type="ParallaxLayer" parent="PlayerCamera/ParallaxBackground"]
+position = Vector2(0, -333)
+scale = Vector2(2.6, 2.6)
+motion_offset = Vector2(75, 0)
+motion_mirroring = Vector2(950, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerCamera/ParallaxBackground/GreenMountainsClouds"]
+texture_filter = 1
 texture = ExtResource("7_3isv0")
 
-[node name="ClosestBackground" type="ParallaxLayer" parent="PlayerCamera/ParallaxBackground"]
-motion_mirroring = Vector2(2470, 0)
+[node name="RailPositioner" type="Node2D" parent="."]
+script = ExtResource("9_lf27q")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerCamera/ParallaxBackground/ClosestBackground"]
-texture_filter = 1
-scale = Vector2(2.6, 2.6)
-texture = ExtResource("8_r754w")
+[node name="Rail" type="Node2D" parent="RailPositioner"]
+script = ExtResource("9_hi4ob")
+
+[node name="ThingPlacer" parent="RailPositioner/Rail" instance=ExtResource("8_pe0my")]
+thing_to_place = ExtResource("9_14sfv")
 
 [node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
 
@@ -89,12 +104,7 @@ carriage_number = 2
 
 [node name="Carriages" parent="Train" instance=ExtResource("8_pe0my")]
 
-[node name="LoopingTrack" type="Node2D" parent="."]
-script = ExtResource("9_hi4ob")
-
-[node name="ThingPlacer" parent="LoopingTrack" instance=ExtResource("8_pe0my")]
-thing_to_place = ExtResource("9_14sfv")
-starting_location = Vector2(0, 300)
+[connection signal="placed_carriages" from="Train" to="RailPositioner" method="_on_train_placed_carriages"]
 
 [editable path="PlayerCamera/CanvasLayer/Interface"]
 [editable path="PlayerCamera/CanvasLayer/Interface/Timer"]

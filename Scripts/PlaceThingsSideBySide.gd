@@ -7,9 +7,8 @@ var thing_position = Vector2.ZERO
 func _ready():
 	thing_position = starting_location
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func place_thing_next_to():
@@ -18,5 +17,3 @@ func place_thing_next_to():
 	thing.global_position = thing_position
 	thing_position.x += thing.show_size().x
 	return thing
-	
-	
