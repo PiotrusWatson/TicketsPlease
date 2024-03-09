@@ -1,20 +1,24 @@
-extends AnimatedSprite2D
+extends Node2D
 
-@onready var path = $"../.."
-@onready var pathFollow = $".."
-@onready var timer = $"../../../../../Interface/Timer/Timer"
+@onready var path = $TrainSpritePath
+@onready var pathFollow = $TrainSpritePath/PathFollow2D
+@onready var train_sprite = $TrainSpritePath/PathFollow2D/SmallTrain
+var timer: Timer
 @export var secondsUntilEnd = 0
 
 var traverseTime = 5 # Time it takes to traverse the path - Link to timer
 var t = 0 # Active time along the path
 var pathLength = 0 # Length of the path
 
+func setup(_timer: Timer):
+	timer = _timer
+	traverseTime = GetTime()
 # Called when the node enters the scene tree for the first time.
 func _ready():	
-	play("default")
+	train_sprite.play("default")
 	pathLength = path.get_curve().get_baked_length()
 	
-	traverseTime = GetTime()
+	
 	pass # Replace with function body.
 
 

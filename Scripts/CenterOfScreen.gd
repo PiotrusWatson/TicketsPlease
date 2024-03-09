@@ -2,10 +2,13 @@ extends Node2D
 
 @onready var windowSize = DisplayServer.window_get_size()
 @onready var big_ticket = $BigTicketPath
+@onready var small_train = $TrainTravel
+@onready var timer = $Timer/Timer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position.x = windowSize.x / 2
 	position.y = windowSize.y / 2
+	small_train.setup(timer)
 	pass # Replace with function body.
 
 

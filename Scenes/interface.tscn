@@ -1,11 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://cp1rsqd8vb2sp"]
+[gd_scene load_steps=28 format=3 uid="uid://cp1rsqd8vb2sp"]
 
 [ext_resource type="Script" path="res://Scripts/CenterOfScreen.gd" id="1_2sivv"]
 [ext_resource type="PackedScene" uid="uid://bbwpbug2x4rm0" path="res://Scenes/Components/timer.tscn" id="2_lgn25"]
 [ext_resource type="Script" path="res://Scripts/BigTicket.gd" id="3_kx3os"]
 [ext_resource type="Texture2D" uid="uid://buq1o0dt711gv" path="res://Sprites/TicketBig.png" id="6_1hmsu"]
 [ext_resource type="Texture2D" uid="uid://b25hjv6em0vsc" path="res://Sprites/PixelTrain/sheet_train_v18.png" id="6_eokdc"]
-[ext_resource type="Script" path="res://Scenes/MapManager.gd" id="6_n8qcg"]
 [ext_resource type="Texture2D" uid="uid://spef880ja37o" path="res://Sprites/PixelTrain/train_v18_logo.png" id="7_qjwja"]
 [ext_resource type="Script" path="res://Scripts/TrainSpritePath.gd" id="9_oplsk"]
 [ext_resource type="Script" path="res://Scripts/SmallTrain.gd" id="12_it5dt"]
@@ -265,7 +264,7 @@ text = "Date of Travel:
 08-MAR-24"
 
 [node name="TrainTravel" type="Node2D" parent="."]
-script = ExtResource("6_n8qcg")
+script = ExtResource("12_it5dt")
 
 [node name="TrainSpritePath" type="Path2D" parent="TrainTravel"]
 position = Vector2(-13, 1)
@@ -281,7 +280,6 @@ loop = false
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ipm8o")
 frame_progress = 0.678365
-script = ExtResource("12_it5dt")
 
 [node name="Origin" type="Label" parent="TrainTravel"]
 offset_left = -324.0
