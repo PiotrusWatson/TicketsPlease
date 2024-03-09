@@ -37,3 +37,5 @@ text = "PLACEHOLDER"
 [node name="Train" type="Node2D" parent="."]
 script = ExtResource("5_poxl3")
 carriage_prefab = ExtResource("1_lgeng")
+
+[node name="Hand" type="Node2D" parent="."]

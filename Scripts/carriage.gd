@@ -1,7 +1,8 @@
-extends StaticBody2D
+extends CharacterBody2D
 
 @onready var image = $Image
 @onready var spawner = $RandomSpawner
+@onready var connector = $Connector
 # Called when the node enters the scene tree for the first time.
 
 func setup():
@@ -16,3 +17,10 @@ func _process(delta):
 
 func show_size():
 	return image.calculate_size()
+	
+func lift_carriage():
+	velocity.y = -200
+	move_and_slide()
+
+func attach_last_carriage(carriage):
+	connector.node_b = carriage.get_path()

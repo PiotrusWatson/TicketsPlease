@@ -28,7 +28,7 @@ b = Vector2(397, 13)
 a = Vector2(-373, 22)
 b = Vector2(-399, 13)
 
-[node name="PlaceholderCarriage" type="StaticBody2D"]
+[node name="PlaceholderCarriage" type="CharacterBody2D"]
 script = ExtResource("1_q66aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -97,3 +97,7 @@ shape = SubResource("SegmentShape2D_iuq7v")
 
 [node name="LeftStep" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_eg3rm")
+
+[node name="Connector" type="PinJoint2D" parent="."]
+position = Vector2(-513, 84)
+node_a = NodePath("..")
