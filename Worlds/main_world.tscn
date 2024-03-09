@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=6 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="PackedScene" uid="uid://bf6n7rjm2t0xn" path="res://Scenes/placeholder_train.tscn" id="1_lgeng"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
+[ext_resource type="PackedScene" uid="uid://c7ebd7j1tnxms" path="res://Scenes/Components/random_idle_anims.tscn" id="3_dgrb7"]
+[ext_resource type="PackedScene" uid="uid://dni528fe2oqcl" path="res://Scenes/Components/detect_object.tscn" id="4_x2f04"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u010y"]
 
 [node name="World" type="Node2D"]
+texture_filter = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -11,3 +16,14 @@
 texture_filter = 1
 
 [node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
+
+[node name="Passenger" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Passenger"]
+shape = SubResource("CapsuleShape2D_u010y")
+
+[node name="RandomIdleAnims" parent="Passenger" instance=ExtResource("3_dgrb7")]
+
+[node name="DetectObject" parent="Passenger" instance=ExtResource("4_x2f04")]
