@@ -1,29 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=7 format=3 uid="uid://cmcvwc4ljedxh"]
 
+[ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bf6n7rjm2t0xn" path="res://Scenes/placeholder_train.tscn" id="1_lgeng"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
-[ext_resource type="PackedScene" uid="uid://c7ebd7j1tnxms" path="res://Scenes/Components/random_idle_anims.tscn" id="3_dgrb7"]
-[ext_resource type="PackedScene" uid="uid://dni528fe2oqcl" path="res://Scenes/Components/detect_object.tscn" id="4_x2f04"]
+[ext_resource type="Script" path="res://Scripts/ticket_checking_ui.gd" id="2_x1h41"]
+[ext_resource type="PackedScene" uid="uid://crtcgftobb0q3" path="res://Scenes/passenger.tscn" id="4_bnmd7"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u010y"]
+[sub_resource type="Theme" id="Theme_vyfct"]
+/font_sizes/FONT = 1000
 
 [node name="World" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_kr5c2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="TicketCheckingPLaceholder" type="GridContainer" parent="Camera2D/CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_x1h41")
+
+[node name="PLACEHOLDER" type="Label" parent="Camera2D/CanvasLayer/TicketCheckingPLaceholder"]
+layout_mode = 2
+theme = SubResource("Theme_vyfct")
+theme_override_font_sizes/font_size = 113
+text = "PLACEHOLDER"
 
 [node name="PlaceholderTrain" parent="." instance=ExtResource("1_lgeng")]
 texture_filter = 1
 
 [node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
 
-[node name="Passenger" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Passenger"]
-shape = SubResource("CapsuleShape2D_u010y")
-
-[node name="RandomIdleAnims" parent="Passenger" instance=ExtResource("3_dgrb7")]
-
-[node name="DetectObject" parent="Passenger" instance=ExtResource("4_x2f04")]
+[node name="Passenger" parent="." instance=ExtResource("4_bnmd7")]
