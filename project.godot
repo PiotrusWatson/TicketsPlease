@@ -18,6 +18,10 @@ run/energy_saving/keep_screen_on.editor=false
 run/stretch/aspect="expand"
 run/stretch/mode="viewport"
 
+[autoload]
+
+PlaceNames="*res://Scripts/Places.gd"
+
 [display]
 
 window/stretch/mode="viewport"

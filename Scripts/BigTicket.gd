@@ -22,11 +22,14 @@ func _process(delta):
 		if (t > traverseTime):
 			t = 0
 		t += delta
-		pathFollow.progress += t
+		pathFollow.progress += t + 15
 	pass
 
 func ShowTicket(): 
+	showTicket = true
 	visible = true
 	
 func HideTicket(): 
+	showTicket = false
+	pathFollow.progress = 0
 	visible = false
