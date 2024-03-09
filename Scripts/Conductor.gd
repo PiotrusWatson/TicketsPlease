@@ -23,5 +23,8 @@ func set_sprite_direction(direction):
 		animated_sprite.flip_h = true
 	else:
 		animated_sprite.flip_h = false
+		
+func interact():
+	pass
 
 

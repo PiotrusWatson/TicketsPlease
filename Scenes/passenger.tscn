@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://crtcgftobb0q3"]
+
+[ext_resource type="Script" path="res://Scripts/Passenger.gd" id="1_ab8es"]
+[ext_resource type="PackedScene" uid="uid://c7ebd7j1tnxms" path="res://Scenes/Components/random_idle_anims.tscn" id="2_7dy3b"]
+[ext_resource type="PackedScene" uid="uid://dni528fe2oqcl" path="res://Scenes/Components/detect_object.tscn" id="3_cj1ir"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u010y"]
+
+[node name="Passenger" type="StaticBody2D" groups=["passenger"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ab8es")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_u010y")
+
+[node name="RandomIdleAnims" parent="." instance=ExtResource("2_7dy3b")]
+
+[node name="DetectObject" parent="." instance=ExtResource("3_cj1ir")]
+
+[connection signal="body_entered" from="DetectObject" to="." method="_on_detect_object_body_entered"]
+[connection signal="body_exited" from="DetectObject" to="." method="_on_detect_object_body_exited"]
