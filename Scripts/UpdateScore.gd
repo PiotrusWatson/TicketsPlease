@@ -1,4 +1,4 @@
-extends Label
+extends Node2D
 
 @onready var ticketCounter = $TicketCounter
 

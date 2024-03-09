@@ -10,11 +10,15 @@ class Date:
 	func _init(_day, _month):
 		day = _day
 		month = _month
-		
+	func make_month(month_number):
+		var months = ["JAN", "FEB", "MAR", 
+		"APR", "MAY", "JUN", "JUL", "AUG",
+		"SEP", "OCT", "NOV", "DEC"]
+		return months[month_number - 1]
 	func equals(otherDate: Date):
 		return otherDate.day == day and otherDate.month == month
 	func _to_string():
-		return str(day) + "-" + str(month) + "-24" 
+		return str(day) + "-" + make_month(month) + "-24" 
 
 
 var Names = ["Bimbleby", "Shepherds Crease", "Sprunton", 
@@ -32,7 +36,10 @@ var Names = ["Bimbleby", "Shepherds Crease", "Sprunton",
 "Smelch",
 "Bastardshire",
 "Stankleg",
-"Ballerdunk"]
+"Ballerdunk",
+"Bert",
+"Loch Thador",
+"Stiffer's Hollow"]
 
 func make_current_stop(map: Array[Place]):
 	return map[randi() % (map.size() - 1)]
@@ -166,8 +173,10 @@ class PlaceRangeBuilder:
 		return map[current_stop.position + randi() % (map.size() - current_stop.position)]
 
 	func generate_correct_range():
-		return PlaceRange.new(pick_stop_before_current(), pick_stop_after_current())
-
+		var good_range = PlaceRange.new(current_stop, current_stop)
+		while good_range.from == good_range.to:
+			good_range = PlaceRange.new(pick_stop_before_current(), pick_stop_after_current())
+		return good_range
 	func find_bad_stop():
 		var current_position = 0
 		var bad_stop = null
@@ -178,9 +187,12 @@ class PlaceRangeBuilder:
 	
 	func generate_bad_range():
 		var bad_choice = int(PossibleBadPositions.keys()[randi() % PossibleBadPositions.size()])
-		if bad_choice == PossibleBadPositions.BAD_FROM:
-			return PlaceRange.new(find_bad_stop(), pick_stop_after_current())
-		elif bad_choice == PossibleBadPositions.BAD_TO:
-			return PlaceRange.new(pick_stop_before_current(), find_bad_stop())
-		else:
-			return PlaceRange.new(find_bad_stop(), find_bad_stop())
+		var bad_range = PlaceRange.new(current_stop, current_stop)
+		while bad_range.from == bad_range.to:
+			if bad_choice == PossibleBadPositions.BAD_FROM:
+				bad_range = PlaceRange.new(find_bad_stop(), pick_stop_after_current())
+			elif bad_choice == PossibleBadPositions.BAD_TO:
+				bad_range = PlaceRange.new(pick_stop_before_current(), find_bad_stop())
+			else:
+				bad_range = PlaceRange.new(find_bad_stop(), find_bad_stop())
+		return bad_range

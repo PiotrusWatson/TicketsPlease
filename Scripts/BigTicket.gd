@@ -28,10 +28,10 @@ func _process(delta):
 	pass
 
 func ShowTicket(ticket: Globals.Ticket): 
-	ticket_feature_date.text = ticket.date._to_string()
+	ticket_feature_date.text = "Date of Travel:\n" + ticket.date._to_string()
 	var place_range = ticket.from_and_to
-	origin.text = place_range.from._to_string()
-	destination.text = place_range.to._to_string()
+	origin.text = "from " + place_range.from._to_string()
+	destination.text = "to " + place_range.to._to_string()
 	showTicket = true
 	visible = true
 	
