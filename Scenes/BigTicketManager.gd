@@ -10,7 +10,12 @@ func _ready():
 func _process(delta):
 	pass
 
-
+func TicketWrong():
+	print("bad ticket")
+	
+func TicketCorrect():
+	print("good ticket")
+	
 func makeVisible():
 	visible = true
 	

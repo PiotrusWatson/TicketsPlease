@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scenes/BigTicketManager.gd" id="7_4lano"]
 
 [node name="Interface" type="Node2D"]
+position = Vector2(576, 324)
 script = ExtResource("1_2sivv")
 
 [node name="TimerWrapper" type="Node2D" parent="."]
