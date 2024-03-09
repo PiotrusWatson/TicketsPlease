@@ -17,9 +17,22 @@ class Date:
 		return str(day) + "-" + str(month) + "-24" 
 
 
-var Names = ["Bimbleby", "Shepherds Crease", "Sprunton", "Kabmeelington", 
-	"Thankful and be Rested",  "Bromp", "Fruntlidge Wells",
-	"Wimble", "Crundridge", "Frollop", "Tentleworth", "Crim"]
+var Names = ["Bimbleby", "Shepherds Crease", "Sprunton", 
+"Kabmeelington", 
+	"Thankful and be Rested",  "Bromp", 
+	"Fruntlidge Wells",
+	"Wimble", "Crundridge", "Frollop", "Tentleworth", 
+	"Crim", 
+	"Sporch",
+"Longtaint",
+"Supplepool",
+"Bingsearch",
+"Boofapint",
+"Kickmascrote", 
+"Smelch",
+"Bastardshire",
+"Stankleg",
+"Ballerdunk"]
 
 func make_current_stop(map: Array[Place]):
 	return map[randi() % (map.size() - 1)]
