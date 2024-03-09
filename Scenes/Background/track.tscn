@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://crooavq2kure6"]
+
+[ext_resource type="Texture2D" uid="uid://ckeqwr880ic3p" path="res://Sprites/PixelTrain/railtrack_v1.png" id="1_e8eu5"]
+
+[node name="Track" type="Sprite2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_e8eu5")

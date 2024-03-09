@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b5t316b30mkgx" path="res://Sprites/PixelTrain/carriage_v18_car1.png" id="1_j481s"]
 [ext_resource type="Script" path="res://Scripts/carriage.gd" id="1_q66aa"]
-[ext_resource type="Script" path="res://Scenes/sprite_helper.gd" id="3_dga6r"]
+[ext_resource type="Script" path="res://Scripts/sprite_helper.gd" id="3_gf4xh"]
 [ext_resource type="PackedScene" uid="uid://bxftaanim0mhs" path="res://Scenes/Components/random_spawner.tscn" id="3_u45o4"]
 [ext_resource type="PackedScene" uid="uid://crtcgftobb0q3" path="res://Scenes/passenger.tscn" id="4_v2p8k"]
 [ext_resource type="PackedScene" uid="uid://blf5rql84yn7j" path="res://Scenes/Gojira/finger.tscn" id="6_jo2cj"]
@@ -39,7 +39,7 @@ shape = SubResource("RectangleShape2D_c7012")
 [node name="Image" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
 texture = ExtResource("1_j481s")
-script = ExtResource("3_dga6r")
+script = ExtResource("3_gf4xh")
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 

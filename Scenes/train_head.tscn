@@ -1,7 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://diyrfdf8h51dr"]
 
 [ext_resource type="Texture2D" uid="uid://b25hjv6em0vsc" path="res://Sprites/PixelTrain/sheet_train_v18.png" id="1_pc4ds"]
-[ext_resource type="Script" path="res://Scenes/sprite_helper.gd" id="3_hmnfm"]
 [ext_resource type="PackedScene" uid="uid://blf5rql84yn7j" path="res://Scenes/Gojira/finger.tscn" id="6_udl8c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7012"]
@@ -127,6 +126,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_7k8ru"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func calculate_size():
+	return texture.get_size() * scale
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd6l3"]
 size = Vector2(418.25, 188.75)
 
@@ -139,7 +155,7 @@ shape = SubResource("RectangleShape2D_c7012")
 [node name="Image" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_mkyub")
-script = ExtResource("3_hmnfm")
+script = SubResource("GDScript_7k8ru")
 
 [node name="BlockingWall" type="CollisionShape2D" parent="."]
 position = Vector2(255.875, -30.625)

@@ -12,3 +12,6 @@ func _process(delta):
 
 func calculate_size():
 	return texture.get_size() * scale
+	
+func show_size():
+	return calculate_size()
