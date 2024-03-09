@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=8 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
-[ext_resource type="PackedScene" uid="uid://bf6n7rjm2t0xn" path="res://Scenes/placeholder_train.tscn" id="1_lgeng"]
+[ext_resource type="PackedScene" uid="uid://bf6n7rjm2t0xn" path="res://Scenes/placeholder_carriage.tscn" id="1_lgeng"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
+[ext_resource type="Script" path="res://Scripts/FollowSomething.gd" id="2_vhvwl"]
 [ext_resource type="Script" path="res://Scripts/ticket_checking_ui.gd" id="2_x1h41"]
+[ext_resource type="Script" path="res://Scripts/Train.gd" id="5_poxl3"]
 
 [sub_resource type="Theme" id="Theme_vyfct"]
 /font_sizes/FONT = 1000
@@ -12,23 +14,26 @@
 texture_filter = 1
 script = ExtResource("1_kr5c2")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("thing_to_follow")]
+script = ExtResource("2_vhvwl")
+thing_to_follow = NodePath("../Conductor")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="PlayerCamera"]
 
-[node name="TicketCheckingPLaceholder" type="GridContainer" parent="Camera2D/CanvasLayer"]
+[node name="TicketCheckingPLaceholder" type="GridContainer" parent="PlayerCamera/CanvasLayer"]
 visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_x1h41")
 
-[node name="PLACEHOLDER" type="Label" parent="Camera2D/CanvasLayer/TicketCheckingPLaceholder"]
+[node name="PLACEHOLDER" type="Label" parent="PlayerCamera/CanvasLayer/TicketCheckingPLaceholder"]
 layout_mode = 2
 theme = SubResource("Theme_vyfct")
 theme_override_font_sizes/font_size = 113
 text = "PLACEHOLDER"
 
-[node name="PlaceholderTrain" parent="." instance=ExtResource("1_lgeng")]
-texture_filter = 1
-
 [node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
+
+[node name="Train" type="Node2D" parent="."]
+script = ExtResource("5_poxl3")
+carriage_prefab = ExtResource("1_lgeng")
