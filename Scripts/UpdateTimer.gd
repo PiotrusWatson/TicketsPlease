@@ -38,4 +38,7 @@ func _process(delta):
 		timerStatus = 0
 		text = "Times up!"
 		#text = str(timerCountdownMinutes) + ":0" + str(timerCountdownSeconds)
+		TimesUp.emit()
 	pass
+
+signal TimesUp
