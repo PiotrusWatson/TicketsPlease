@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://cyvbfskxd7w5e"
+path="res://.godot/imported/accuse_to.dialogue-fa7a79c7f7488f35286b4dd5882e1adb.tres"
+
+[deps]
+
+source_file="res://Dialogue/accuse_to.dialogue"
+dest_files=["res://.godot/imported/accuse_to.dialogue-fa7a79c7f7488f35286b4dd5882e1adb.tres"]
+
+[params]
+
+defaults=true

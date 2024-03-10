@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://cvhnaqx5awthn"
+path="res://.godot/imported/oh_shit_its_godzilla.dialogue-1809f0ece11de437b9a60c22c6e8a080.tres"
+
+[deps]
+
+source_file="res://Dialogue/oh_shit_its_godzilla.dialogue"
+dest_files=["res://.godot/imported/oh_shit_its_godzilla.dialogue-1809f0ece11de437b9a60c22c6e8a080.tres"]
+
+[params]
+
+defaults=true

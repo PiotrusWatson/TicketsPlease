@@ -28,8 +28,7 @@ var will_hide_balloon: bool = false
 var dialogue_line: DialogueLine:
 	set(next_dialogue_line):
 		is_waiting_for_input = false
-		balloon.focus_mode = Control.FOCUS_ALL
-		balloon.grab_focus()
+		balloon.focus_mode = Control.FOCUS_NONE
 
 		# The dialogue has finished so close the balloon
 		if not next_dialogue_line:
@@ -61,17 +60,10 @@ var dialogue_line: DialogueLine:
 			await dialogue_label.finished_typing
 
 		# Wait for input
-		if dialogue_line.responses.size() > 0:
-			balloon.focus_mode = Control.FOCUS_NONE
-			responses_menu.show()
-		elif dialogue_line.time != "":
-			var time = dialogue_line.text.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
-			await get_tree().create_timer(time).timeout
-			next(dialogue_line.next_id)
-		else:
-			is_waiting_for_input = true
-			balloon.focus_mode = Control.FOCUS_ALL
-			balloon.grab_focus()
+		var time = dialogue_line.text.length() * 0.07 
+		await get_tree().create_timer(time).timeout
+		next(dialogue_line.next_id)
+		
 	get:
 		return dialogue_line
 
@@ -83,7 +75,8 @@ func _ready() -> void:
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Only the balloon is allowed to handle input while it's showing
-	get_viewport().set_input_as_handled()
+	pass
+	#get_viewport().set_input_as_handled()
 
 
 ## Start some dialogue
@@ -126,7 +119,6 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	if dialogue_line.responses.size() > 0: return
 
 	# When there are no response options the balloon itself is the clickable thing
-	get_viewport().set_input_as_handled()
 
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		next(dialogue_line.next_id)

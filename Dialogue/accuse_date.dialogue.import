@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://defs34mqjsfh8"
+path="res://.godot/imported/accuse_date.dialogue-868a66e1bd672824ee9cc7422fcec7a4.tres"
+
+[deps]
+
+source_file="res://Dialogue/accuse_date.dialogue"
+dest_files=["res://.godot/imported/accuse_date.dialogue-868a66e1bd672824ee9cc7422fcec7a4.tres"]
+
+[params]
+
+defaults=true

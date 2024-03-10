@@ -3,6 +3,7 @@ extends Node
 enum PossibleBadPositions{BAD_FROM, BAD_TO, BAD_BOTH}
 enum Guess{BAD_ORIGIN, BAD_DESTINATION, BAD_DATE, ALL_CORRECT}
 
+var time_to_read = 1
 class Date:
 	var day : int
 	var month : int

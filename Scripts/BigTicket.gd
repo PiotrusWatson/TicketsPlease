@@ -76,18 +76,22 @@ func store_correct_details(details):
 	correct_details = details
 
 func _on_origin_guess():
+	DialogueManager.show_dialogue_balloon(load("res://Dialogue/accuse_from.dialogue"), "", [{"time": Globals.time_to_read}])
 	var correct_guess = !correct_details.is_from_correct(current_ticket)
 	guess.emit(Globals.Guess.BAD_ORIGIN, correct_guess)
 	current_passenger.handle_guess(Globals.Guess.BAD_ORIGIN, correct_guess)
 func _on_destination_guess():
+	DialogueManager.show_dialogue_balloon(load("res://Dialogue/accuse_to.dialogue"), "", [{"time": Globals.time_to_read}])
 	var correct_guess = !correct_details.is_to_correct(current_ticket)
 	guess.emit(Globals.Guess.BAD_DESTINATION, correct_guess)
 	current_passenger.handle_guess(Globals.Guess.BAD_DESTINATION, correct_guess)
 func _on_date_guess():
+	DialogueManager.show_dialogue_balloon(load("res://Dialogue/accuse_date.dialogue"), "", [{"time": Globals.time_to_read}])
 	var correct_guess = !correct_details.is_date_correct(current_ticket)
 	guess.emit(Globals.Guess.BAD_DATE, correct_guess)
 	current_passenger.handle_guess(Globals.Guess.BAD_DATE, correct_guess)
 func _on_correct_guess():
+	DialogueManager.show_dialogue_balloon(load("res://Dialogue/all_good.dialogue"), "", [{"time": Globals.time_to_read}])
 	var correct_guess = correct_details.is_ticket_correct(current_ticket)
 	guess.emit(Globals.Guess.ALL_CORRECT, correct_guess)
 	current_passenger.handle_guess(Globals.Guess.ALL_CORRECT, correct_guess)

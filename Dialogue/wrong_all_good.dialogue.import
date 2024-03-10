@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://bm7qi418aroqp"
+path="res://.godot/imported/wrong_all_good.dialogue-c841c3e2f444b0f736cf1ad5e0f35b0c.tres"
+
+[deps]
+
+source_file="res://Dialogue/wrong_all_good.dialogue"
+dest_files=["res://.godot/imported/wrong_all_good.dialogue-c841c3e2f444b0f736cf1ad5e0f35b0c.tres"]
+
+[params]
+
+defaults=true

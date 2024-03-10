@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://c76kj0xu1qgxb"
+path="res://.godot/imported/wrong_to.dialogue-317df2a5b75dc3e6dff63c284d0b7c1c.tres"
+
+[deps]
+
+source_file="res://Dialogue/wrong_to.dialogue"
+dest_files=["res://.godot/imported/wrong_to.dialogue-317df2a5b75dc3e6dff63c284d0b7c1c.tres"]
+
+[params]
+
+defaults=true
