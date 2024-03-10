@@ -10,7 +10,7 @@ extends Path2D
 @onready var date_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate/Date
 @onready var correct_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/Correct/Correct
 
-var correct_details: Globals.CorrectDetails
+var correct_details: CorrectDetails
 var current_passenger
 var showTicket = false
 
@@ -18,7 +18,7 @@ var traverseTime = 5 # Time it takes to traverse the path
 var t = 0 # Active time along the path
 var pathLength = 0 # Length of the path
 
-var current_ticket: Globals.Ticket
+var current_ticket: Ticket
 signal guess(content, is_correct)
 
 # Called when the node enters the scene tree for the first time.
@@ -37,7 +37,7 @@ func _process(delta):
 		pathFollow.progress += t + 15
 	pass
 
-func ShowTicket(ticket: Globals.Ticket, passenger): 
+func ShowTicket(ticket: Ticket, passenger): 
 	ticket_feature_date.text = "Date of Travel:\n" + ticket.date._to_string()
 	var place_range = ticket.from_and_to
 	origin.text = "from " + place_range.from._to_string()

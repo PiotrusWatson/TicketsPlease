@@ -3,7 +3,7 @@ extends StaticBody2D
 signal checking_ticket(ticket, passenger)
 signal walked_away
 var ticket_checked = false
-var ticket: Globals.Ticket
+var ticket: Ticket
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -13,7 +13,7 @@ func _ready():
 func _process(_delta):
 	pass
 
-func give_ticket(_ticket: Globals.Ticket):
+func give_ticket(_ticket: Ticket):
 	ticket = _ticket
 
 func _on_detect_object_body_entered(body):

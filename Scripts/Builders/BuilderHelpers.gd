@@ -3,7 +3,7 @@ class_name BuilderHelpers
 static func make_current_stop(map: Array[Place]):
 	return map[randi() % (map.size() - 1)]
 	
-static func make_possible_places(names: Array[String]):
+static func make_possible_places(names):
 	var possible_places : Array[Place]
 	for name in names:
 		possible_places.append(Place.new(name, -1))

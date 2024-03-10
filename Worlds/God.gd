@@ -16,6 +16,7 @@ var chaosElements = []
 var place_range_builder: PlaceRangeBuilder
 var correct_detail_holder: CorrectDetails
 var passengers
+var map
 signal map_built(map)
 signal todays_date(date)
 signal last_stop_chosen(stop)
@@ -25,17 +26,17 @@ signal correct_details_created(details)
 func _ready():
 	var correct_date = Date.generate_date()
 	var possible_places = BuilderHelpers.make_possible_places(Globals.names)
-	var map = BuilderHelpers.build_map(possible_places, 7)
-	var current_stop = Globals.make_current_stop(map)
-	place_range_builder = Globals.PlaceRangeBuilder.new(map, current_stop, possible_places)
-	correct_detail_holder = Globals.CorrectDetails.new(correct_date, map, current_stop, place_range_builder)
+	map = BuilderHelpers.build_map(possible_places, 7)
+	var current_stop = BuilderHelpers.make_current_stop(map)
+	place_range_builder = PlaceRangeBuilder.new(map, current_stop, possible_places)
+	correct_detail_holder = CorrectDetails.new(correct_date, current_stop)
 	get_tree().create_timer(1).timeout.connect(tell_us_were_finished)
 	passengers = get_tree().get_nodes_in_group("passenger")
 	max_to_check = passengers.size() / 2
 	give_tickets_to_passengers()
 
 func tell_us_were_finished():
-	map_built.emit(correct_detail_holder.map)
+	map_built.emit(map)
 	todays_date.emit(correct_detail_holder.date)
 	last_stop_chosen.emit(correct_detail_holder.current_stop)
 	correct_details_created.emit(correct_detail_holder)
