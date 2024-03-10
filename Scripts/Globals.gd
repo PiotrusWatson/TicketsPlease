@@ -1,7 +1,7 @@
 extends Node
 
 enum PossibleBadPositions{BAD_FROM, BAD_TO, BAD_BOTH}
-
+enum Guess{BAD_ORIGIN, BAD_DESTINATION, BAD_DATE, ALL_CORRECT}
 
 class Date:
 	var day : int

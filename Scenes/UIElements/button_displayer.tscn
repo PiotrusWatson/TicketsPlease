@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckuxtjpt366px"]
+
+[ext_resource type="Script" path="res://Scenes/displayButtons.gd" id="1_egvg7"]
+
+[node name="ButtonDisplayer" type="Node2D"]
+script = ExtResource("1_egvg7")
+
+[node name="Incorrect" type="Button" parent="."]
+offset_left = 117.0
+offset_top = -1.0
+offset_right = 169.0
+offset_bottom = 21.0
+theme_override_font_sizes/font_size = 10
+text = "Incorrect"
+
+[node name="Cancel" type="Button" parent="."]
+offset_left = 166.0
+offset_top = -1.0
+offset_right = 215.0
+offset_bottom = 21.0
+theme_override_font_sizes/font_size = 10
+text = "Cancel
+"
+
+[connection signal="pressed" from="Incorrect" to="." method="_on_incorrect_pressed"]
+[connection signal="pressed" from="Cancel" to="." method="_on_cancel_pressed"]

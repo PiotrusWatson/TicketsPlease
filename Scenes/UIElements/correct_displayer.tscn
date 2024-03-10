@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0sflvycgr3rw"]
+
+[ext_resource type="PackedScene" uid="uid://ckuxtjpt366px" path="res://Scenes/UIElements/button_displayer.tscn" id="1_1fwwm"]
+
+[node name="ButtonDisplayer" instance=ExtResource("1_1fwwm")]
+
+[node name="Incorrect" parent="." index="0"]
+text = "Correct
+"

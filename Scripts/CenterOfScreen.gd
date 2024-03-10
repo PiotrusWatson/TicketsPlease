@@ -6,6 +6,8 @@ extends Node2D
 @onready var timer = $Timer/Timer
 @onready var date_display = $DateDisplay
 @onready var last_stop_display = $PlaceholderLastStop
+
+signal guess(content)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position.x = windowSize.x / 2
@@ -34,4 +36,9 @@ func take_date(date):
 	date_display.change_date(date)
 	
 func take_last_stop(last_stop):
-	last_stop_display.text = "Last Stop: " + last_stop.name
+	last_stop_display.text = "Previous Stop: " + last_stop.name
+
+func store_correct_details(details):
+	big_ticket.store_correct_details(details)
+func _on_big_ticket_path_guess(content):
+	guess.emit(content)

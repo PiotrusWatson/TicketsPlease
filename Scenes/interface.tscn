@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cp1rsqd8vb2sp"]
+[gd_scene load_steps=33 format=3 uid="uid://cp1rsqd8vb2sp"]
 
 [ext_resource type="Script" path="res://Scripts/CenterOfScreen.gd" id="1_2sivv"]
 [ext_resource type="PackedScene" uid="uid://bbwpbug2x4rm0" path="res://Scenes/Components/timer.tscn" id="2_lgn25"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://buq1o0dt711gv" path="res://Sprites/TicketBig.png" id="6_1hmsu"]
 [ext_resource type="Texture2D" uid="uid://b25hjv6em0vsc" path="res://Sprites/PixelTrain/sheet_train_v18.png" id="6_eokdc"]
 [ext_resource type="Theme" uid="uid://brpovs0mfyjqs" path="res://Themes/main_theme.tres" id="6_gjffl"]
+[ext_resource type="PackedScene" uid="uid://ckuxtjpt366px" path="res://Scenes/UIElements/button_displayer.tscn" id="7_gos5s"]
 [ext_resource type="Texture2D" uid="uid://spef880ja37o" path="res://Sprites/PixelTrain/train_v18_logo.png" id="7_qjwja"]
+[ext_resource type="PackedScene" uid="uid://b0sflvycgr3rw" path="res://Scenes/UIElements/correct_displayer.tscn" id="8_l5ypl"]
 [ext_resource type="Script" path="res://Scripts/TrainSpritePath.gd" id="9_oplsk"]
 [ext_resource type="PackedScene" uid="uid://dounykx4a0epd" path="res://Scenes/Components/TicketCheck.tscn" id="10_1upvi"]
 [ext_resource type="Script" path="res://Worlds/DateDisplay.gd" id="11_rnrlu"]
@@ -241,6 +243,8 @@ theme = ExtResource("6_gjffl")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "from   Faketown"
 
+[node name="Origin" parent="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin" instance=ExtResource("7_gos5s")]
+
 [node name="TicketFeatureDestination2" type="Button" parent="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage"]
 offset_left = -259.0
 offset_top = -68.0
@@ -249,6 +253,9 @@ offset_bottom = -37.0
 theme = ExtResource("6_gjffl")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "to        Realcity"
+
+[node name="Destination" parent="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2" instance=ExtResource("7_gos5s")]
+position = Vector2(20.8, 0)
 
 [node name="TicketFeaturePrice" type="Label" parent="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage"]
 offset_left = -192.0
@@ -268,13 +275,19 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Date of Travel:
 08-MAR-24"
 
-[node name="CheckButton" type="CheckButton" parent="BigTicketPath"]
+[node name="Date" parent="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate" instance=ExtResource("7_gos5s")]
+position = Vector2(-110, 56)
+
+[node name="Correct" type="Button" parent="BigTicketPath"]
 offset_left = 29.0
 offset_top = 49.0
 offset_right = 239.0
 offset_bottom = 80.0
 theme = ExtResource("6_gjffl")
 text = "Everything Correct :) "
+
+[node name="Correct" parent="BigTicketPath/Correct" instance=ExtResource("8_l5ypl")]
+position = Vector2(-5, 32)
 
 [node name="TrainTravel" type="Node2D" parent="."]
 position = Vector2(0, 35.95)
@@ -334,8 +347,14 @@ offset_right = -471.0
 offset_bottom = -245.0
 text = "Last Stop: "
 
-[connection signal="toggled" from="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin" to="BigTicketPath" method="_on_ticket_feature_origin_toggled"]
-[connection signal="toggled" from="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2" to="BigTicketPath" method="_on_ticket_feature_destination_2_toggled"]
-[connection signal="toggled" from="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate" to="BigTicketPath" method="_on_ticket_feature_date_toggled"]
+[connection signal="guess" from="BigTicketPath" to="." method="_on_big_ticket_path_guess"]
+[connection signal="pressed" from="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin" to="BigTicketPath" method="_on_ticket_feature_origin_pressed"]
+[connection signal="guess" from="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin/Origin" to="BigTicketPath" method="_on_origin_guess"]
+[connection signal="pressed" from="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2" to="BigTicketPath" method="_on_ticket_feature_destination_2_pressed"]
+[connection signal="guess" from="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2/Destination" to="BigTicketPath" method="_on_destination_guess"]
+[connection signal="pressed" from="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate" to="BigTicketPath" method="_on_ticket_feature_date_pressed"]
+[connection signal="guess" from="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate/Date" to="BigTicketPath" method="_on_date_guess"]
+[connection signal="pressed" from="BigTicketPath/Correct" to="BigTicketPath" method="_on_correct_pressed"]
+[connection signal="guess" from="BigTicketPath/Correct/Correct" to="BigTicketPath" method="_on_correct_guess"]
 
 [editable path="Timer"]

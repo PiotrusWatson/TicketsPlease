@@ -11,7 +11,7 @@ var passengers
 signal map_built(map)
 signal todays_date(date)
 signal last_stop_chosen(stop)
-
+signal correct_details_created(details)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var date_builder = Globals.DateBuilder.new()
@@ -31,6 +31,7 @@ func tell_us_were_finished():
 	map_built.emit(correct_detail_holder.map)
 	todays_date.emit(correct_detail_holder.date)
 	last_stop_chosen.emit(correct_detail_holder.current_stop)
+	correct_details_created.emit(correct_detail_holder)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

@@ -5,6 +5,11 @@ extends Path2D
 @onready var origin = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin
 @onready var destination = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2
 @onready var ticket_feature_date = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate
+@onready var origin_confirmaton = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin/ButtonDisplayer
+@onready var destination_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2/ButtonDisplayer
+@onready var date_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate/ButtonDisplayer
+@onready var correct_confirmation = $Correct/ButtonDisplayer
+
 var showTicket = false
 
 var traverseTime = 5 # Time it takes to traverse the path
@@ -12,10 +17,7 @@ var t = 0 # Active time along the path
 var pathLength = 0 # Length of the path
 
 var current_ticket: Globals.Ticket
-var origin_sus = false
-var destination_sus = false
-var date_sus = false
-var ticket_correct = false
+signal guess(content)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,13 +50,30 @@ func HideTicket():
 	visible = false
 
 
-func _on_ticket_feature_origin_toggled(toggled_on):
-	origin_sus = toggled_on
+func _on_ticket_feature_origin_pressed():
+	origin_confirmaton.show_buttons()
 
-func _on_ticket_feature_destination_2_toggled(toggled_on):
-	destination_sus = toggled_on
 
-func _on_ticket_feature_date_toggled(toggled_on):
-	date_sus = toggled_on
-	
+func _on_ticket_feature_destination_2_pressed():
+	destination_confirmation.show_buttons()
 
+
+func _on_ticket_feature_date_pressed():
+	date_confirmation.show_buttons()
+
+
+func _on_correct_pressed():
+	correct_confirmation.show_buttons()
+
+
+func _on_origin_guess():
+	guess.emit(Globals.Guess.BAD_ORIGIN)
+
+func _on_destination_guess():
+	guess.emit(Globals.Guess.BAD_DESTINATION)
+
+func _on_date_guess():
+	guess.emit(Globals.Guess.BAD_DATE)
+
+func _on_correct_guess():
+	guess.emit(Globals.Guess.ALL_CORRECT)
