@@ -8,7 +8,7 @@ extends Node2D
 @onready var date_display = $DateDisplay
 @onready var last_stop_display = $PlaceholderLastStop
 
-signal guess(content)
+signal guess(content, is_correct)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer.wait_time = (timerParent.timerCountdownMinutes * 60) + timerParent.timerCountdownSeconds
@@ -26,8 +26,8 @@ func _process(_delta):
 func WindowSizeChanges():
 	position.x = windowSize.x / 2
 	position.y = windowSize.y / 2
-func show_ticket(ticket: Globals.Ticket):
-	big_ticket.ShowTicket(ticket)
+func show_ticket(ticket: Globals.Ticket, passenger):
+	big_ticket.ShowTicket(ticket, passenger)
 
 func hide_ticket():
 	big_ticket.HideTicket()
@@ -44,5 +44,6 @@ func take_last_stop(last_stop):
 func store_correct_details(details):
 	big_ticket.store_correct_details(details)
 	
-func _on_big_ticket_path_guess(content):
-	guess.emit(content)
+func _on_big_ticket_path_guess(content, is_correct):
+	guess.emit(content, is_correct)
+	hide_ticket()

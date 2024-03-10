@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://bhu4afe1hjvyp"
+path="res://.godot/imported/tickets_please.dialogue-ca479f48e8fa37be4cce55036bfc677e.tres"
+
+[deps]
+
+source_file="res://Dialogue/tickets_please.dialogue"
+dest_files=["res://.godot/imported/tickets_please.dialogue-ca479f48e8fa37be4cce55036bfc677e.tres"]
+
+[params]
+
+defaults=true
