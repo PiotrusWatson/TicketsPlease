@@ -134,15 +134,6 @@ theme = ExtResource("8_wh7r3")
 [node name="FlavourSerialNumber2" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="5"]
 theme = ExtResource("8_wh7r3")
 
-[node name="TicketFeatureOrigin" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage" index="1"]
-theme = ExtResource("8_wh7r3")
-
-[node name="TicketFeatureDestination2" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage" index="2"]
-theme = ExtResource("8_wh7r3")
-
-[node name="TicketFeatureDate" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage" index="4"]
-theme = ExtResource("8_wh7r3")
-
 [node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
 
 [node name="Train" type="Node2D" parent="."]

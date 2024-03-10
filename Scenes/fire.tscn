@@ -491,6 +491,7 @@ animations = [{
 }]
 
 [node name="Fire" type="Node2D"]
+z_index = -1
 
 [node name="FireAnimation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
