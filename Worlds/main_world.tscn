@@ -93,6 +93,9 @@ thing_to_follow = NodePath("../Conductor")
 
 [node name="Interface" parent="PlayerCamera/CanvasLayer" instance=ExtResource("7_qtk3u")]
 
+[node name="Timer" parent="PlayerCamera/CanvasLayer/Interface/Timer" index="2"]
+one_shot = true
+
 [node name="BigTicketPathFollow" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath" index="0"]
 cubic_interp = false
 script = SubResource("GDScript_6v55p")
@@ -155,6 +158,7 @@ script = ExtResource("5_poxl3")
 
 [node name="God" parent="." instance=ExtResource("15_1fcc5")]
 
+[connection signal="timeout" from="PlayerCamera/CanvasLayer/Interface/Timer/Timer" to="PlayerCamera/CanvasLayer/Interface/Timer" method="_on_timer_timeout"]
 [connection signal="placed_carriages" from="Train" to="RailPositioner" method="_on_train_placed_carriages"]
 
 [editable path="PlayerCamera/CanvasLayer/Interface"]
