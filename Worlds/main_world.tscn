@@ -102,10 +102,18 @@ texture = ExtResource("6_ih43u")
 region_enabled = true
 region_rect = Rect2(0, 0, 65536, 8)
 
-[node name="TheBoy" parent="." instance=ExtResource("15_e8o4o")]
+[node name="TheParallaxBoy" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, 262)
+motion_scale = Vector2(0.06, 0)
+
+[node name="TheBoy" parent="ParallaxBackground/TheParallaxBoy" instance=ExtResource("15_e8o4o")]
 z_index = -50
 z_as_relative = false
-position = Vector2(-841, -288)
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-836, -526)
 scale = Vector2(1.5, 1.5)
 
 [node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("thing_to_follow")]
