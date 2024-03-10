@@ -259,6 +259,7 @@ text = "Date of Travel:
 08-MAR-24"
 
 [node name="TrainTravel" type="Node2D" parent="."]
+position = Vector2(0, 35.95)
 script = ExtResource("12_it5dt")
 
 [node name="TrainSpritePath" type="Path2D" parent="TrainTravel"]
@@ -277,17 +278,19 @@ sprite_frames = SubResource("SpriteFrames_ipm8o")
 frame_progress = 0.678365
 
 [node name="Origin" type="Label" parent="TrainTravel"]
-offset_left = -324.0
-offset_top = -301.0
-offset_right = -276.0
-offset_bottom = -278.0
+offset_left = -336.0
+offset_top = -281.0
+offset_right = -288.0
+offset_bottom = -258.0
+rotation = -0.811578
 text = "Origin"
 
 [node name="Destination" type="Label" parent="TrainTravel"]
-offset_left = 231.0
-offset_top = -300.0
-offset_right = 321.0
-offset_bottom = -277.0
+offset_left = 220.0
+offset_top = -264.0
+offset_right = 310.0
+offset_bottom = -241.0
+rotation = -0.785398
 text = "Destination"
 
 [node name="StopsOnTheWay" type="Node2D" parent="TrainTravel"]

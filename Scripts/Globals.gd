@@ -67,7 +67,7 @@ class MapBuilder:
 			if possible_places[selected_index].position == -1:
 				possible_places[selected_index].position = counter
 				counter += 1
-			map.append(possible_places[selected_index])
+				map.append(possible_places[selected_index])
 		return map
 	
 	

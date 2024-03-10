@@ -7,6 +7,7 @@ var timer: Timer
 @export var secondsUntilEnd = 0
 @onready var origin_label = $Origin
 @onready var destination_label = $Destination
+@onready var stops_on_the_way = $StopsOnTheWay
 
 var traverseTime = 5 # Time it takes to traverse the path - Link to timer
 var t = 0 # Active time along the path
@@ -39,3 +40,18 @@ func GetTime():
 func setup_destinations(map):
 	origin_label.text = map[0].name
 	destination_label.text = map[map.size() - 1].name
+	var amount_to_move = calculate_lerp(get_distance(), map.size() - 1)
+	var starting_position = origin_label.global_position
+	for i in range(1, map.size() -1):
+		starting_position.x += amount_to_move
+		var new_label = origin_label.duplicate()
+		stops_on_the_way.add_child(new_label)
+		new_label.global_position = starting_position
+		new_label.text = map[i].name
+	
+
+func get_distance():
+	return destination_label.global_position.x - origin_label.global_position.x
+
+func calculate_lerp(distance, map_size):
+	return distance / map_size

@@ -26,4 +26,5 @@ func hide_ticket():
 	big_ticket.HideTicket()
 
 func take_map(map):
+	print("HEY")
 	small_train.setup_destinations(map)
