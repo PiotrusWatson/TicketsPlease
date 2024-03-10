@@ -4,23 +4,6 @@ enum PossibleBadPositions{BAD_FROM, BAD_TO, BAD_BOTH}
 enum Guess{BAD_ORIGIN, BAD_DESTINATION, BAD_DATE, ALL_CORRECT}
 
 var time_to_read = 1
-class Date:
-	var day : int
-	var month : int
-	
-	func _init(_day, _month):
-		day = _day
-		month = _month
-	func make_month(month_number):
-		var months = ["JAN", "FEB", "MAR", 
-		"APR", "MAY", "JUN", "JUL", "AUG",
-		"SEP", "OCT", "NOV", "DEC"]
-		return months[month_number - 1]
-	func equals(otherDate: Date):
-		return otherDate.day == day and otherDate.month == month
-	func _to_string():
-		return str(day) + "-" + make_month(month) + "-24" 
-
 
 var Names = ["Bimbleby", "Shepherds Crease", "Sprunton", 
 "Kabmeelington", 
@@ -48,95 +31,45 @@ var Names = ["Bimbleby", "Shepherds Crease", "Sprunton",
 
 func make_current_stop(map: Array[Place]):
 	return map[randi() % (map.size() - 1)]
+	
 func make_possible_places():
 	var possible_places : Array[Place]
 	for name in Names:
 		possible_places.append(Place.new(name, -1))
 	return possible_places
 	
-class MapBuilder:
-	var possible_places: Array[Place]
 
-	func _init(_possible_places: Array[Place]):
-		possible_places = _possible_places
 	
-	func build_map(number_of_stops: int):
-		var counter = 0
-		var map : Array[Place]
-		while counter < number_of_stops:
-			var selected_index = randi() % possible_places.size()
-			if possible_places[selected_index].position == -1:
-				possible_places[selected_index].position = counter
-				counter += 1
-				map.append(possible_places[selected_index])
-		return map
+func build_map(possible_places: Array[Place], number_of_stops: int):
+	var counter = 0
+	var map : Array[Place]
+	while counter < number_of_stops:
+		var selected_index = randi() % possible_places.size()
+		if possible_places[selected_index].position == -1:
+			possible_places[selected_index].position = counter
+			counter += 1
+			map.append(possible_places[selected_index])
+	return map
 	
 	
 				
 class IncorrectTicketBuilder:
 	var current_date : Date
 	var place_range_builder: PlaceRangeBuilder
-	var date_builder: DateBuilder
 	func _init(_current_date: Date, _place_range_builder: PlaceRangeBuilder):
 		current_date = _current_date
 		place_range_builder = _place_range_builder
-		date_builder = DateBuilder.new()
 	
 	func generate_incorrect_ticket():
 		var bad_place = randi_range(0, 2)
 		if bad_place == 0:
 			var date = current_date
 			while date.equals(current_date):
-				date = date_builder.GenerateDate()
+				date = Globals.GenerateDate()
 			return Ticket.new(date, place_range_builder.generate_correct_range())
 		else:
 			return Ticket.new(current_date, place_range_builder.generate_bad_range())
-class Place:
-	var name: String
-	var position: int
-	
-	func _init(_name, _position):
-		name = _name
-		position = _position
-	
-	func equals(otherPlace: Place):
-		return otherPlace.position - position
-		
-	func _to_string():
-		return name
-	func get_position():
-		return position
 
-class PlaceRange:
-	var from: Place 
-	var to: Place
-	
-	func _init(_from, _to):
-		from = _from
-		to = _to
-	
-	func is_station_before_from(place: Place):
-		if from.get_position()== -1:
-			return false
-		return from.equals(place) >= 0
-	
-	func is_station_after_to(place: Place):
-		if to.get_position() == -1:
-			return false
-		return to.equals(place) < 0
-	func is_in_range(place : Place):
-		return is_station_before_from(place) and is_station_after_to(place)
-		
-class Ticket:
-	var from_and_to: PlaceRange
-	var date: Date
-	
-	func _init(_date, _place_range):
-		date = _date
-		from_and_to = _place_range
-	
-	func is_correct(todays_date, next_destination):
-		return todays_date.equals(date) and from_and_to.is_in_range(next_destination)
 
 class CorrectDetails:
 	var date: Date
@@ -168,11 +101,11 @@ class CorrectDetails:
 	func is_ticket_correct(other_ticket: Ticket):
 		return is_date_correct(other_ticket) and is_from_correct(other_ticket) and is_to_correct(other_ticket)
 		
-class DateBuilder:
-	func GenerateDate():
-		var dayCalc = (randi() % 29) + 1
-		var monthCalc = (randi() % 11) + 1
-		return Date.new(dayCalc, monthCalc)
+
+func GenerateDate():
+	var dayCalc = (randi() % 29) + 1
+	var monthCalc = (randi() % 11) + 1
+	return Date.new(dayCalc, monthCalc)
 	
 
 class PlaceRangeBuilder:

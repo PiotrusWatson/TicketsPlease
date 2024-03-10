@@ -24,11 +24,9 @@ signal correct_details_created(details)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var date_builder = Globals.DateBuilder.new()
-	var correct_date = date_builder.GenerateDate()
+	var correct_date = Globals.GenerateDate()
 	var possible_places = Globals.make_possible_places()
-	var map_builder = Globals.MapBuilder.new(possible_places)
-	var map = map_builder.build_map(7)
+	var map = Globals.build_map(possible_places, 7)
 	var current_stop = Globals.make_current_stop(map)
 	place_range_builder = Globals.PlaceRangeBuilder.new(map, current_stop, possible_places)
 	incorrect_ticket_builder = Globals.IncorrectTicketBuilder.new(correct_date, place_range_builder)
