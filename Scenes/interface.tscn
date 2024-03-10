@@ -1,12 +1,15 @@
-[gd_scene load_steps=28 format=3 uid="uid://cp1rsqd8vb2sp"]
+[gd_scene load_steps=31 format=3 uid="uid://cp1rsqd8vb2sp"]
 
 [ext_resource type="Script" path="res://Scripts/CenterOfScreen.gd" id="1_2sivv"]
 [ext_resource type="PackedScene" uid="uid://bbwpbug2x4rm0" path="res://Scenes/Components/timer.tscn" id="2_lgn25"]
 [ext_resource type="Script" path="res://Scripts/BigTicket.gd" id="3_kx3os"]
 [ext_resource type="Texture2D" uid="uid://buq1o0dt711gv" path="res://Sprites/TicketBig.png" id="6_1hmsu"]
 [ext_resource type="Texture2D" uid="uid://b25hjv6em0vsc" path="res://Sprites/PixelTrain/sheet_train_v18.png" id="6_eokdc"]
+[ext_resource type="Theme" uid="uid://brpovs0mfyjqs" path="res://Themes/main_theme.tres" id="6_gjffl"]
 [ext_resource type="Texture2D" uid="uid://spef880ja37o" path="res://Sprites/PixelTrain/train_v18_logo.png" id="7_qjwja"]
 [ext_resource type="Script" path="res://Scripts/TrainSpritePath.gd" id="9_oplsk"]
+[ext_resource type="PackedScene" uid="uid://dounykx4a0epd" path="res://Scenes/Components/TicketCheck.tscn" id="10_1upvi"]
+[ext_resource type="Script" path="res://Worlds/DateDisplay.gd" id="11_rnrlu"]
 [ext_resource type="Script" path="res://Scripts/SmallTrain.gd" id="12_it5dt"]
 
 [sub_resource type="Curve2D" id="Curve2D_amoas"]
@@ -248,6 +251,11 @@ offset_left = -192.0
 offset_top = 121.0
 offset_right = -143.0
 offset_bottom = 152.0
+theme = ExtResource("6_gjffl")
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+disabled = true
 text = "£0.30"
 
 [node name="TicketFeatureDate" type="Button" parent="BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage"]
@@ -294,5 +302,19 @@ rotation = -0.785398
 text = "Destination"
 
 [node name="StopsOnTheWay" type="Node2D" parent="TrainTravel"]
+
+[node name="TicketCheck" parent="." instance=ExtResource("10_1upvi")]
+position = Vector2(450, -267)
+
+[node name="DateDisplay" type="Node2D" parent="."]
+script = ExtResource("11_rnrlu")
+
+[node name="DateText" type="Label" parent="DateDisplay"]
+offset_left = -550.0
+offset_top = -306.0
+offset_right = -442.0
+offset_bottom = -283.0
+text = "📅 10-MAR-24"
+metadata/_edit_use_anchors_ = true
 
 [editable path="Timer"]

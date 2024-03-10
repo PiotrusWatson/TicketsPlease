@@ -8,8 +8,8 @@ var place_range_builder: Globals.PlaceRangeBuilder
 var incorrect_ticket_builder: Globals.IncorrectTicketBuilder
 var correct_detail_holder: Globals.CorrectDetails
 var passengers
-var map
 signal map_built(map)
+signal todays_date(date)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,18 +17,18 @@ func _ready():
 	var correct_date = date_builder.GenerateDate()
 	var possible_places = Globals.make_possible_places()
 	var map_builder = Globals.MapBuilder.new(possible_places)
-	map = map_builder.build_map(7)
-	get_tree().create_timer(1).timeout.connect(tell_us_were_finished)
+	var map = map_builder.build_map(7)
 	var current_stop = Globals.make_current_stop(map)
 	place_range_builder = Globals.PlaceRangeBuilder.new(map, current_stop, possible_places)
 	incorrect_ticket_builder = Globals.IncorrectTicketBuilder.new(correct_date, place_range_builder)
 	correct_detail_holder = Globals.CorrectDetails.new(correct_date, map, current_stop, place_range_builder)
-	
+	get_tree().create_timer(1).timeout.connect(tell_us_were_finished)
 	passengers = get_tree().get_nodes_in_group("passenger")
 	give_tickets_to_passengers()
 
 func tell_us_were_finished():
-	map_built.emit(map)
+	map_built.emit(correct_detail_holder.map)
+	todays_date.emit(correct_detail_holder.date)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

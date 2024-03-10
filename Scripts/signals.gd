@@ -10,6 +10,7 @@ func _ready():
 		passenger.checking_ticket.connect(ui.show_ticket)
 		passenger.walked_away.connect(ui.hide_ticket)
 	god.map_built.connect(ui.take_map)
+	god.todays_date.connect(ui.take_date)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

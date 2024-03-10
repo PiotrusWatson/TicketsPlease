@@ -27,3 +27,6 @@ func hide_ticket():
 
 func take_map(map):
 	small_train.setup_destinations(map)
+	
+func take_date(date):
+	pass

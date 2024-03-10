@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://crtcgftobb0q3" path="res://Scenes/passenger.tscn" id="4_v2p8k"]
 [ext_resource type="PackedScene" uid="uid://blf5rql84yn7j" path="res://Scenes/Gojira/finger.tscn" id="6_jo2cj"]
 [ext_resource type="Script" path="res://Scripts/FireManager.gd" id="7_dwiqq"]
-[ext_resource type="PackedScene" path="res://Scenes/fire.tscn" id="8_rkbwx"]
+[ext_resource type="PackedScene" uid="uid://b33xqb8en0nnp" path="res://Scenes/fire.tscn" id="8_rkbwx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7012"]
 size = Vector2(800, 64)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://diyrfdf8h51dr"]
+[gd_scene load_steps=27 format=3 uid="uid://diyrfdf8h51dr"]
 
+[ext_resource type="Script" path="res://Scripts/train_head.gd" id="1_magn2"]
 [ext_resource type="Texture2D" uid="uid://b25hjv6em0vsc" path="res://Sprites/PixelTrain/sheet_train_v18.png" id="1_pc4ds"]
 [ext_resource type="PackedScene" uid="uid://blf5rql84yn7j" path="res://Scenes/Gojira/finger.tscn" id="6_udl8c"]
 
@@ -145,12 +146,25 @@ func calculate_size():
 	elif \"sprite_frames\" in self:
 		return self.sprite_frames.get_frame_texture(\"default\", 1).get_size() * scale
 	return -1
+	
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd6l3"]
 size = Vector2(418.25, 188.75)
 
-[node name="PlaceholderCarriage" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fp2v"]
+size = Vector2(95, 40)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tikw7"]
+a = Vector2(-53, 11)
+b = Vector2(-152, 68)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1nqt2"]
+a = Vector2(-38, 20)
+b = Vector2(-53, 11)
+
+[node name="TrainHead" type="CharacterBody2D"]
+script = ExtResource("1_magn2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-44.5, 96)
@@ -159,6 +173,7 @@ shape = SubResource("RectangleShape2D_c7012")
 [node name="Image" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_mkyub")
+frame_progress = 0.735652
 script = SubResource("GDScript_7k8ru")
 
 [node name="BlockingWall" type="CollisionShape2D" parent="."]
@@ -186,3 +201,16 @@ scale = Vector2(1.5, 1.5)
 position = Vector2(84, 147)
 rotation = 3.14159
 scale = Vector2(1.7, 1.7)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(-169, -11)
+
+[node name="DriverSection" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 38)
+shape = SubResource("RectangleShape2D_2fp2v")
+
+[node name="Stairs" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_tikw7")
+
+[node name="Bump" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_1nqt2")

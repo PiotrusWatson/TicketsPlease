@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=16 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/Train.gd" id="5_poxl3"]
 [ext_resource type="Texture2D" uid="uid://ckeqwr880ic3p" path="res://Sprites/PixelTrain/railtrack_v1.png" id="6_ih43u"]
 [ext_resource type="PackedScene" uid="uid://cp1rsqd8vb2sp" path="res://Scenes/interface.tscn" id="7_qtk3u"]
-[ext_resource type="PackedScene" uid="uid://dounykx4a0epd" path="res://Scenes/Components/TicketCheck.tscn" id="8_7dlo1"]
 [ext_resource type="PackedScene" uid="uid://b4yus1rc87wlq" path="res://Scenes/Components/thing_placer.tscn" id="8_pe0my"]
 [ext_resource type="Theme" uid="uid://brpovs0mfyjqs" path="res://Themes/main_theme.tres" id="8_wh7r3"]
 [ext_resource type="Texture2D" uid="uid://dq3r6e1a6te1s" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/sky_fc.png" id="12_abref"]
@@ -141,23 +140,8 @@ theme = ExtResource("8_wh7r3")
 [node name="TicketFeatureDestination2" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage" index="2"]
 theme = ExtResource("8_wh7r3")
 
-[node name="TicketFeaturePrice" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage" index="3"]
-theme = ExtResource("8_wh7r3")
-
 [node name="TicketFeatureDate" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage" index="4"]
 theme = ExtResource("8_wh7r3")
-
-[node name="TicketCheck" parent="PlayerCamera/CanvasLayer/Interface" instance=ExtResource("8_7dlo1")]
-position = Vector2(450, -267)
-
-[node name="DateDisplay" type="Node2D" parent="PlayerCamera/CanvasLayer/Interface"]
-
-[node name="DateText" type="Label" parent="PlayerCamera/CanvasLayer/Interface/DateDisplay"]
-offset_left = -550.0
-offset_top = -306.0
-offset_right = -442.0
-offset_bottom = -283.0
-text = "📅 10-MAR-24"
 
 [node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
 
