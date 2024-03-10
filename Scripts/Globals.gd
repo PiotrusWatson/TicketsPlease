@@ -114,12 +114,17 @@ class PlaceRange:
 		from = _from
 		to = _to
 	
-	func is_in_range(place : Place):
-		if from.position == -1 or to.position == -1:
+	func is_station_before_from(place: Place):
+		if from.postion == -1:
 			return false
-		var ahead_of_from = from.equals(place) >= 0
-		var before_to = to.equals(place) <= 0
-		return ahead_of_from and before_to
+		return from.equals(place) <= 0
+	
+	func is_station_after_to(place: Place):
+		if to.position == -1:
+			return false
+		return to.equals(place) > 0
+	func is_in_range(place : Place):
+		return is_station_before_from(place) and is_station_after_to(place)
 		
 class Ticket:
 	var from_and_to: PlaceRange
@@ -150,6 +155,17 @@ class CorrectDetails:
 		var place_range = place_range_builder.generate_correct_range()
 		return Ticket.new(date, place_range)
 		
+	func is_date_correct(other_ticket: Ticket):
+		return other_ticket.date.equals(date)
+	
+	func is_from_correct(other_ticket: Ticket):
+		return other_ticket.from_and_to.is_station_before_from(current_stop)
+	
+	func is_to_correct(other_ticket: Ticket):
+		return other_ticket.from_and_to.is_station_after_to(current_stop)
+	
+	func is_ticket_correct(other_ticket: Ticket):
+		return is_date_correct(other_ticket) and is_from_correct(other_ticket) and is_to_correct(other_ticket)
 		
 class DateBuilder:
 	func GenerateDate():

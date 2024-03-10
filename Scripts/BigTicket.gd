@@ -11,6 +11,12 @@ var traverseTime = 5 # Time it takes to traverse the path
 var t = 0 # Active time along the path
 var pathLength = 0 # Length of the path
 
+var current_ticket: Globals.Ticket
+var origin_sus = false
+var destination_sus = false
+var date_sus = false
+var ticket_correct = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
@@ -34,8 +40,21 @@ func ShowTicket(ticket: Globals.Ticket):
 	destination.text = "to " + place_range.to._to_string()
 	showTicket = true
 	visible = true
+	current_ticket = ticket
 	
 func HideTicket(): 
 	showTicket = false
 	pathFollow.progress = 0
 	visible = false
+
+
+func _on_ticket_feature_origin_toggled(toggled_on):
+	origin_sus = toggled_on
+
+func _on_ticket_feature_destination_2_toggled(toggled_on):
+	destination_sus = toggled_on
+
+func _on_ticket_feature_date_toggled(toggled_on):
+	date_sus = toggled_on
+	
+
