@@ -5,12 +5,12 @@ extends Path2D
 @onready var origin = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin
 @onready var destination = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2
 @onready var ticket_feature_date = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate
-@onready var origin_confirmaton = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin/ButtonDisplayer
-@onready var destination_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2/ButtonDisplayer
-@onready var date_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate/ButtonDisplayer
-@onready var correct_confirmation = $Correct/ButtonDisplayer
+@onready var origin_confirmaton = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin/Origin
+@onready var destination_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2/Destination
+@onready var date_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate/Date
+@onready var correct_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/Correct/Correct
 
-var correct_details
+var correct_details: Globals.CorrectDetails
 var showTicket = false
 
 var traverseTime = 5 # Time it takes to traverse the path
@@ -49,6 +49,10 @@ func HideTicket():
 	showTicket = false
 	pathFollow.progress = 0
 	visible = false
+	origin_confirmaton.hide_buttons()
+	destination_confirmation.hide_buttons()
+	date_confirmation.hide_buttons()
+	correct_confirmation.hide_buttons()
 
 
 func _on_ticket_feature_origin_pressed():
@@ -70,13 +74,12 @@ func store_correct_details(details):
 	correct_details = details
 
 func _on_origin_guess():
-	guess.emit(Globals.Guess.BAD_ORIGIN)
-
+	var correct_guess = !correct_details.is_from_correct(current_ticket)
 func _on_destination_guess():
-	guess.emit(Globals.Guess.BAD_DESTINATION)
+	var correct_guess = !correct_details.is_to_correct(current_ticket)
 
 func _on_date_guess():
-	guess.emit(Globals.Guess.BAD_DATE)
+	var correct_guess = !correct_details.is_date_correct(current_ticket)
 
 func _on_correct_guess():
-	guess.emit(Globals.Guess.ALL_CORRECT)
+	var correct_guess = correct_details.is_ticket_correct(current_ticket)
