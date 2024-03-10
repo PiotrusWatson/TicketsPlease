@@ -40,5 +40,6 @@ func take_last_stop(last_stop):
 
 func store_correct_details(details):
 	big_ticket.store_correct_details(details)
+	
 func _on_big_ticket_path_guess(content):
 	guess.emit(content)
