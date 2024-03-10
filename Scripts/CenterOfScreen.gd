@@ -47,3 +47,6 @@ func store_correct_details(details):
 func _on_big_ticket_path_guess(content, is_correct):
 	guess.emit(content, is_correct)
 	hide_ticket()
+
+func check(amount):
+	$TicketCheck.ScoreUpdate()

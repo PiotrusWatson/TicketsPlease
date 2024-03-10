@@ -13,6 +13,8 @@ func _ready():
 	god.todays_date.connect(ui.take_date)
 	god.last_stop_chosen.connect(ui.take_last_stop)
 	god.correct_details_created.connect(ui.store_correct_details)
+	ui.guess.connect(god.correct_check)
+	god.amount_checked.connect(ui.check)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass

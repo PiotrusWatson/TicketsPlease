@@ -328,6 +328,7 @@ text = "Destination"
 
 [node name="TicketCheck" parent="." instance=ExtResource("10_1upvi")]
 position = Vector2(450, -267)
+ticketsToCheck = 2
 
 [node name="DateDisplay" type="Node2D" parent="."]
 script = ExtResource("11_rnrlu")

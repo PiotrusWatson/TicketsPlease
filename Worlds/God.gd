@@ -4,6 +4,10 @@ extends Node
 @export var map_size = 7
 @export var percent_incorrect = 0.5
 
+
+signal amount_checked(checked)
+var max_to_check: int
+var checked = 0
 var chaosElements = []
 @onready var theBoy = $"../ParallaxBackground/TheParallaxBoy"
 @onready var train = $"../Train"
@@ -31,6 +35,7 @@ func _ready():
 	correct_detail_holder = Globals.CorrectDetails.new(correct_date, map, current_stop, place_range_builder)
 	get_tree().create_timer(1).timeout.connect(tell_us_were_finished)
 	passengers = get_tree().get_nodes_in_group("passenger")
+	max_to_check = passengers.size() / 2
 	give_tickets_to_passengers()
 
 func tell_us_were_finished():
@@ -54,6 +59,7 @@ func give_tickets_to_passengers():
 func TheBoyAppears():
 	background.Halt()
 	theBoy.visible = true
+	DialogueManager.show_dialogue_balloon(load("res://Dialogue/oh_shit_its_godzilla.dialogue"))
 	for i in range(train.carriages.size()):
 		train.carriages[i].ShowHand()
 		train.carriages[i].ShowFire()
@@ -63,3 +69,10 @@ func TheBoyAppears():
 func _on_timer_times_up():
 	TheBoyAppears()
 	pass # Replace with function body.
+	
+func correct_check(var1, is_correct):
+	if is_correct:
+		checked += 1
+		amount_checked.emit(checked)
+	if checked >= max_to_check:
+		get_tree().change_scene_to_file("res://Worlds/win.tscn")

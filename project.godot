@@ -32,8 +32,9 @@ directories/dtl_directory={
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+"<<<<<<<HEAD[editor_plugins]enabled"=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
 [editor_plugins]
 
