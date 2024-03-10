@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
 [ext_resource type="Script" path="res://Scripts/FollowSomething.gd" id="2_vhvwl"]
-[ext_resource type="Script" path="res://Scripts/ticket_checking_ui.gd" id="2_x1h41"]
 [ext_resource type="Script" path="res://Scripts/MovingBackground.gd" id="5_6dqpj"]
 [ext_resource type="Script" path="res://Scripts/Train.gd" id="5_poxl3"]
 [ext_resource type="Texture2D" uid="uid://ckeqwr880ic3p" path="res://Sprites/PixelTrain/railtrack_v1.png" id="6_ih43u"]
@@ -149,13 +148,6 @@ theme = ExtResource("8_wh7r3")
 
 [node name="TicketCheck" parent="PlayerCamera/CanvasLayer/Interface" instance=ExtResource("8_7dlo1")]
 position = Vector2(450, -267)
-
-[node name="TicketCheckingPLaceholder" type="GridContainer" parent="PlayerCamera/CanvasLayer/Interface"]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -536.0
-offset_bottom = -284.0
-script = ExtResource("2_x1h41")
 
 [node name="DateDisplay" type="Node2D" parent="PlayerCamera/CanvasLayer/Interface"]
 
