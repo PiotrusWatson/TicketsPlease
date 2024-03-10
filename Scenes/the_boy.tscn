@@ -4,7 +4,6 @@
 
 [node name="TheBoy" type="Node2D"]
 
-[node name="DrawTheBoy" type="CanvasLayer" parent="."]
-
-[node name="ItsHim" type="Sprite2D" parent="DrawTheBoy"]
+[node name="ItsHim" type="Sprite2D" parent="."]
+position = Vector2(536, 503)
 texture = ExtResource("1_xsrfg")

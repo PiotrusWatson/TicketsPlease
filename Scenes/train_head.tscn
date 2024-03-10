@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://diyrfdf8h51dr"]
+[gd_scene load_steps=28 format=3 uid="uid://diyrfdf8h51dr"]
 
 [ext_resource type="Script" path="res://Scripts/train_head.gd" id="1_magn2"]
 [ext_resource type="Texture2D" uid="uid://b25hjv6em0vsc" path="res://Sprites/PixelTrain/sheet_train_v18.png" id="1_pc4ds"]
+[ext_resource type="PackedScene" uid="uid://r6ad3jw0lpja" path="res://Scenes/explosion.tscn" id="4_rmlqx"]
 [ext_resource type="PackedScene" uid="uid://blf5rql84yn7j" path="res://Scenes/Gojira/finger.tscn" id="6_udl8c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7012"]
@@ -214,3 +215,15 @@ shape = SubResource("SegmentShape2D_tikw7")
 
 [node name="Bump" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_1nqt2")
+
+[node name="Explosion" parent="." instance=ExtResource("4_rmlqx")]
+visible = false
+position = Vector2(-413, 79)
+
+[node name="Explosion2" parent="." instance=ExtResource("4_rmlqx")]
+visible = false
+position = Vector2(424, -17)
+
+[node name="Explosion3" parent="." instance=ExtResource("4_rmlqx")]
+visible = false
+position = Vector2(-58, -118)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=17 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://diyrfdf8h51dr" path="res://Scenes/train_head.tscn" id="13_758je"]
 [ext_resource type="Texture2D" uid="uid://dmoqkjcl08i5k" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/grassy_mountains_fc.png" id="13_j2h3y"]
 [ext_resource type="PackedScene" uid="uid://fkudaoq2mu61" path="res://god.tscn" id="15_1fcc5"]
+[ext_resource type="PackedScene" uid="uid://f84uksoxfkdk" path="res://Scenes/the_boy.tscn" id="15_e8o4o"]
 
 [sub_resource type="GDScript" id="GDScript_6v55p"]
 script/source = "extends PathFollow2D
@@ -101,6 +102,20 @@ texture = ExtResource("6_ih43u")
 region_enabled = true
 region_rect = Rect2(0, 0, 65536, 8)
 
+[node name="TheParallaxBoy" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, 262)
+motion_scale = Vector2(0.06, 0)
+
+[node name="TheBoy" parent="ParallaxBackground/TheParallaxBoy" instance=ExtResource("15_e8o4o")]
+z_index = -50
+z_as_relative = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-836, -526)
+scale = Vector2(1.5, 1.5)
+
 [node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("thing_to_follow")]
 script = ExtResource("2_vhvwl")
 thing_to_follow = NodePath("../Conductor")
@@ -108,6 +123,9 @@ thing_to_follow = NodePath("../Conductor")
 [node name="CanvasLayer" type="CanvasLayer" parent="PlayerCamera"]
 
 [node name="Interface" parent="PlayerCamera/CanvasLayer" instance=ExtResource("7_qtk3u")]
+
+[node name="Timer" parent="PlayerCamera/CanvasLayer/Interface" index="0"]
+timerCountdownMinutes = 2
 
 [node name="Timer" parent="PlayerCamera/CanvasLayer/Interface/Timer" index="2"]
 one_shot = true
