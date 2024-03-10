@@ -124,6 +124,9 @@ thing_to_follow = NodePath("../Conductor")
 
 [node name="Interface" parent="PlayerCamera/CanvasLayer" instance=ExtResource("7_qtk3u")]
 
+[node name="Timer" parent="PlayerCamera/CanvasLayer/Interface" index="0"]
+timerCountdownMinutes = 2
+
 [node name="Timer" parent="PlayerCamera/CanvasLayer/Interface/Timer" index="2"]
 one_shot = true
 

@@ -9,28 +9,24 @@ var timer: Timer
 @onready var destination_label = $Destination
 @onready var stops_on_the_way = $StopsOnTheWay
 
-var traverseTime = 5 # Time it takes to traverse the path - Link to timer
-var t = 0 # Active time along the path
+var traverseTime = 0 # Time it takes to traverse the path
 var pathLength = 0 # Length of the path
 
 func setup(_timer: Timer):
 	timer = _timer
 	traverseTime = GetTime()
+	print("Timer Started at: " + str(traverseTime))
+
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	train_sprite.play("default")
 	pathLength = path.get_curve().get_baked_length()
-	
-	
+	print("pathLength: " + str(pathLength))
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (t > traverseTime):
-		t = 0
-	t += delta
-	pathFollow.progress += t
+	pathFollow.progress += (pathLength / traverseTime) * delta
 	pass
 
 func GetTime():

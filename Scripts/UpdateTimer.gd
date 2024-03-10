@@ -1,15 +1,12 @@
 extends Node2D
 
-# Timer Statuses
-# 0 = Paused
-# 1 = Active
-# 2 = Reset, go to Paused
 var stopped = false
 @export var timerCountdownMinutes = 0
 @export var timerCountdownSeconds = 0
 @onready var timer_label = $TimerTime
 @onready var timer = $Timer
 signal TimesUp
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -24,11 +21,6 @@ func _process(delta):
 		timer_label.text = str(minutes) + ":0" + str(seconds)
 	else:
 		timer_label.text = str(minutes) + ":" + str(seconds)
-
-	pass
-
-
-
 
 func _on_timer_timeout():
 	timer_label.text = "Time's up!"
