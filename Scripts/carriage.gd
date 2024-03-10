@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var spawner = $RandomSpawner
 @onready var connector = $Connector
 @onready var left_wall = $LeftBuffer
+@onready var fireManager = $FireManager
 # Called when the node enters the scene tree for the first time.
 
 func setup():
@@ -23,5 +24,8 @@ func lift_carriage():
 	pass
 
 func embiggen():
-	left_wall.shape.
+	pass
+
+func MakeFire():
+	fireManager.FirePlacer()
 

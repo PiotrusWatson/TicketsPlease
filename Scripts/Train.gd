@@ -5,10 +5,11 @@ extends Node2D
 signal placed_carriages(y_pos)
 var last_carriage = null
 var carriages: Array[PhysicsBody2D]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	place_carriages()
-
+	carriages[9].MakeFire()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

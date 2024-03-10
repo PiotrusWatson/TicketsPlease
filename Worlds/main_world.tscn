@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=16 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
@@ -10,9 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dounykx4a0epd" path="res://Scenes/Components/TicketCheck.tscn" id="8_7dlo1"]
 [ext_resource type="PackedScene" uid="uid://b4yus1rc87wlq" path="res://Scenes/Components/thing_placer.tscn" id="8_pe0my"]
 [ext_resource type="Theme" uid="uid://brpovs0mfyjqs" path="res://Themes/main_theme.tres" id="8_wh7r3"]
-[ext_resource type="PackedScene" uid="uid://crooavq2kure6" path="res://Scenes/Components/Background/track.tscn" id="9_14sfv"]
-[ext_resource type="Script" path="res://Scripts/LoopingThing.gd" id="9_hi4ob"]
-[ext_resource type="Script" path="res://Scripts/RailPositioner.gd" id="9_lf27q"]
 [ext_resource type="Texture2D" uid="uid://dq3r6e1a6te1s" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/sky_fc.png" id="12_abref"]
 [ext_resource type="Texture2D" uid="uid://dgr62ldpnj8gn" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/hill.png" id="12_foiix"]
 [ext_resource type="Texture2D" uid="uid://dmoqkjcl08i5k" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/grassy_mountains_fc.png" id="13_j2h3y"]
@@ -161,15 +158,6 @@ offset_right = -442.0
 offset_bottom = -283.0
 text = "📅 10-MAR-24"
 
-[node name="RailPositioner" type="Node2D" parent="."]
-script = ExtResource("9_lf27q")
-
-[node name="Rail" type="Node2D" parent="RailPositioner"]
-script = ExtResource("9_hi4ob")
-
-[node name="ThingPlacer" parent="RailPositioner/Rail" instance=ExtResource("8_pe0my")]
-thing_to_place = ExtResource("9_14sfv")
-
 [node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
 
 [node name="Train" type="Node2D" parent="."]
@@ -180,7 +168,6 @@ script = ExtResource("5_poxl3")
 [node name="God" parent="." instance=ExtResource("15_1fcc5")]
 
 [connection signal="timeout" from="PlayerCamera/CanvasLayer/Interface/Timer/Timer" to="PlayerCamera/CanvasLayer/Interface/Timer" method="_on_timer_timeout"]
-[connection signal="placed_carriages" from="Train" to="RailPositioner" method="_on_train_placed_carriages"]
 
 [editable path="PlayerCamera/CanvasLayer/Interface"]
 [editable path="PlayerCamera/CanvasLayer/Interface/Timer"]
