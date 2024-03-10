@@ -33,7 +33,7 @@ b = Vector2(-399, 13)
 script = ExtResource("1_q66aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 48)
+position = Vector2(-1, 47)
 shape = SubResource("RectangleShape2D_c7012")
 
 [node name="Image" type="Sprite2D" parent="."]
