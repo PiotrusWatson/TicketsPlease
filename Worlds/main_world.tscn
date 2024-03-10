@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
 [ext_resource type="Script" path="res://Scripts/FollowSomething.gd" id="2_vhvwl"]
-[ext_resource type="Script" path="res://Scripts/ticket_checking_ui.gd" id="2_x1h41"]
 [ext_resource type="Script" path="res://Scripts/MovingBackground.gd" id="5_6dqpj"]
 [ext_resource type="Script" path="res://Scripts/Train.gd" id="5_poxl3"]
+[ext_resource type="Texture2D" uid="uid://ckeqwr880ic3p" path="res://Sprites/PixelTrain/railtrack_v1.png" id="6_ih43u"]
 [ext_resource type="PackedScene" uid="uid://cp1rsqd8vb2sp" path="res://Scenes/interface.tscn" id="7_qtk3u"]
 [ext_resource type="PackedScene" uid="uid://dounykx4a0epd" path="res://Scenes/Components/TicketCheck.tscn" id="8_7dlo1"]
 [ext_resource type="PackedScene" uid="uid://b4yus1rc87wlq" path="res://Scenes/Components/thing_placer.tscn" id="8_pe0my"]
@@ -50,6 +50,7 @@ script = ExtResource("5_6dqpj")
 amount_to_move = 0
 
 [node name="Sky" type="Sprite2D" parent="ParallaxBackground/Back"]
+texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("12_abref")
 region_enabled = true
@@ -65,6 +66,7 @@ script = ExtResource("5_6dqpj")
 amount_to_move = 25
 
 [node name="GrassyMountain" type="Sprite2D" parent="ParallaxBackground/Mid"]
+texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("13_j2h3y")
 region_enabled = true
@@ -80,10 +82,27 @@ script = ExtResource("5_6dqpj")
 amount_to_move = 75
 
 [node name="Hill" type="Sprite2D" parent="ParallaxBackground/Fore"]
+texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("12_foiix")
 region_enabled = true
 region_rect = Rect2(0, 0, 9216, 216)
+
+[node name="Rail" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(0, 140)
+scale = Vector2(3, 3)
+motion_scale = Vector2(0, 0)
+script = ExtResource("5_6dqpj")
+amount_to_move = 1000
+
+[node name="Rail" type="Sprite2D" parent="ParallaxBackground/Rail"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("6_ih43u")
+region_enabled = true
+region_rect = Rect2(0, 0, 65536, 8)
 
 [node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("thing_to_follow")]
 script = ExtResource("2_vhvwl")
@@ -133,12 +152,14 @@ theme = ExtResource("8_wh7r3")
 [node name="TicketCheck" parent="PlayerCamera/CanvasLayer/Interface" instance=ExtResource("8_7dlo1")]
 position = Vector2(450, -267)
 
-[node name="TicketCheckingPLaceholder" type="GridContainer" parent="PlayerCamera/CanvasLayer/Interface"]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -536.0
-offset_bottom = -284.0
-script = ExtResource("2_x1h41")
+[node name="DateDisplay" type="Node2D" parent="PlayerCamera/CanvasLayer/Interface"]
+
+[node name="DateText" type="Label" parent="PlayerCamera/CanvasLayer/Interface/DateDisplay"]
+offset_left = -550.0
+offset_top = -306.0
+offset_right = -442.0
+offset_bottom = -283.0
+text = "📅 10-MAR-24"
 
 [node name="RailPositioner" type="Node2D" parent="."]
 script = ExtResource("9_lf27q")
