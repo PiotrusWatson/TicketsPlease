@@ -17,3 +17,7 @@ func place_thing_next_to():
 	thing.global_position = thing_position
 	thing_position.x += thing.show_size().x
 	return thing
+
+func get_next_point():
+	return thing_position
+

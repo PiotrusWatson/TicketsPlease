@@ -127,7 +127,7 @@ animations = [{
 }]
 
 [sub_resource type="GDScript" id="GDScript_7k8ru"]
-script/source = "extends Sprite2D
+script/source = "extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -140,7 +140,11 @@ func _process(delta):
 	pass
 
 func calculate_size():
-	return texture.get_size() * scale
+	if \"texture\" in self:
+		return self.texture.get_size() * scale
+	elif \"sprite_frames\" in self:
+		return self.sprite_frames.get_frame_texture(\"default\", 1).get_size() * scale
+	return -1
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd6l3"]
