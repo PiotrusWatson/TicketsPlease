@@ -24,7 +24,9 @@ func lift_carriage():
 	pass
 
 func embiggen():
-	pass
+	var new_shape = RectangleShape2D.new()
+	new_shape.size.y = 300
+	left_wall.shape = new_shape
 
 func MakeFire():
 	fireManager.FirePlacer()

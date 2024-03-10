@@ -10,6 +10,7 @@ var carriages: Array[PhysicsBody2D]
 func _ready():
 	place_carriages()
 	carriages[9].MakeFire()
+	carriages[0].embiggen()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
