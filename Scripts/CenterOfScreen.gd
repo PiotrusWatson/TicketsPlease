@@ -5,6 +5,7 @@ extends Node2D
 @onready var small_train = $TrainTravel
 @onready var timer = $Timer/Timer
 @onready var date_display = $DateDisplay
+@onready var last_stop_display = $PlaceholderLastStop
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position.x = windowSize.x / 2
@@ -31,3 +32,6 @@ func take_map(map):
 	
 func take_date(date):
 	date_display.change_date(date)
+	
+func take_last_stop(last_stop):
+	last_stop_display.text = "Last Stop: " + last_stop.name

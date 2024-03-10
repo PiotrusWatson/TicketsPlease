@@ -317,4 +317,11 @@ offset_bottom = -283.0
 text = "📅 10-MAR-24"
 metadata/_edit_use_anchors_ = true
 
+[node name="PlaceholderLastStop" type="Label" parent="."]
+offset_left = -551.0
+offset_top = -268.0
+offset_right = -471.0
+offset_bottom = -245.0
+text = "Last Stop: "
+
 [editable path="Timer"]

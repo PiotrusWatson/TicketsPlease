@@ -160,6 +160,7 @@ class DateBuilder:
 
 class PlaceRangeBuilder:
 	var map: Array[Place]
+	#point we just left :)
 	var current_stop: Place
 	var all_stops: Array[Place]
 	
@@ -174,7 +175,7 @@ class PlaceRangeBuilder:
 			return map[randi() % (current_stop.position + 1)]
 			
 	func pick_stop_after_current():
-		return map[current_stop.position + randi() % (map.size() - current_stop.position)]
+		return map[current_stop.position + 1 + randi() % (map.size() - (current_stop.position + 1))]
 
 	func generate_correct_range():
 		var good_range = PlaceRange.new(current_stop, current_stop)
