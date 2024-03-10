@@ -10,6 +10,7 @@ extends Path2D
 @onready var date_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate/ButtonDisplayer
 @onready var correct_confirmation = $Correct/ButtonDisplayer
 
+var correct_details
 var showTicket = false
 
 var traverseTime = 5 # Time it takes to traverse the path
@@ -65,6 +66,8 @@ func _on_ticket_feature_date_pressed():
 func _on_correct_pressed():
 	correct_confirmation.show_buttons()
 
+func store_correct_details(details):
+	correct_details = details
 
 func _on_origin_guess():
 	guess.emit(Globals.Guess.BAD_ORIGIN)
