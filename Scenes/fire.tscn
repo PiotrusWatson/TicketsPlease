@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://b33xqb8en0nnp"]
+[gd_scene load_steps=123 format=3 uid="uid://b33xqb8en0nnp"]
 
 [ext_resource type="Texture2D" uid="uid://sptrsbkpnn68" path="res://Sprites/Fire/2/1_0.png" id="1_0tywa"]
 [ext_resource type="Texture2D" uid="uid://04ypno5yfff4" path="res://Sprites/Fire/2/1_1.png" id="2_gudyh"]
@@ -120,6 +120,7 @@
 [ext_resource type="Texture2D" uid="uid://b6sc3ia7oko20" path="res://Sprites/Fire/2/1_117.png" id="118_a3r5e"]
 [ext_resource type="Texture2D" uid="uid://ckjwmcj5yv75h" path="res://Sprites/Fire/2/1_118.png" id="119_mltt3"]
 [ext_resource type="Texture2D" uid="uid://yd1xihfftogg" path="res://Sprites/Fire/2/1_119.png" id="120_n414q"]
+[ext_resource type="Script" path="res://Scripts/FireAnimation.gd" id="121_px4vd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f3vq8"]
 animations = [{
@@ -491,6 +492,8 @@ animations = [{
 
 [node name="Fire" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="FireAnimation" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_f3vq8")
 frame_progress = 0.506372
+script = ExtResource("121_px4vd")

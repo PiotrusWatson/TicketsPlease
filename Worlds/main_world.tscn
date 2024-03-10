@@ -162,6 +162,7 @@ text = "📅 10-MAR-24"
 
 [node name="Train" type="Node2D" parent="."]
 script = ExtResource("5_poxl3")
+carriage_number = 2
 
 [node name="Carriages" parent="Train" instance=ExtResource("8_pe0my")]
 
