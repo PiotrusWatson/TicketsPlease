@@ -35,3 +35,7 @@ func _process(delta):
 func GetTime():
 	secondsUntilEnd = timer.time_left
 	return secondsUntilEnd
+
+func setup_destinations(map):
+	origin_label.text = map[0].name
+	destination_label.text = map[map.size() - 1].name
