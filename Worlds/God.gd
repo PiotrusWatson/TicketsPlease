@@ -1,3 +1,4 @@
+#be not afraid 👀
 extends Node
 
 @export var map_size = 7
@@ -7,6 +8,7 @@ var place_range_builder: Globals.PlaceRangeBuilder
 var incorrect_ticket_builder: Globals.IncorrectTicketBuilder
 var correct_detail_holder: Globals.CorrectDetails
 var passengers
+signal map_built(map)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +17,7 @@ func _ready():
 	var possible_places = Globals.make_possible_places()
 	var map_builder = Globals.MapBuilder.new(possible_places)
 	var map = map_builder.build_map(7)
+	map_built.emit(map)
 	var current_stop = Globals.make_current_stop(map)
 	place_range_builder = Globals.PlaceRangeBuilder.new(map, current_stop, possible_places)
 	incorrect_ticket_builder = Globals.IncorrectTicketBuilder.new(correct_date, place_range_builder)

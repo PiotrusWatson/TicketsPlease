@@ -24,3 +24,6 @@ func show_ticket(ticket: Globals.Ticket):
 
 func hide_ticket():
 	big_ticket.HideTicket()
+
+func take_map(map):
+	pass

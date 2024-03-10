@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://brpovs0mfyjqs"]
+
+[ext_resource type="FontFile" uid="uid://bkws51udxd6vt" path="res://Fonts/Ticketing.otf" id="1_tb4fg"]
+
+[resource]
+default_font = ExtResource("1_tb4fg")

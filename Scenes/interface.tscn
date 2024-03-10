@@ -145,11 +145,6 @@ animations = [{
 position = Vector2(576, 324)
 script = ExtResource("1_2sivv")
 
-[node name="GlobalTimer" type="Timer" parent="."]
-wait_time = 300.0
-one_shot = true
-autostart = true
-
 [node name="Timer" parent="." instance=ExtResource("2_lgn25")]
 position = Vector2(450, -300)
 
@@ -294,5 +289,7 @@ offset_top = -300.0
 offset_right = 321.0
 offset_bottom = -277.0
 text = "Destination"
+
+[node name="StopsOnTheWay" type="Node2D" parent="TrainTravel"]
 
 [editable path="Timer"]

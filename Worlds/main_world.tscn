@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=19 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
@@ -7,8 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/MovingBackground.gd" id="5_6dqpj"]
 [ext_resource type="Script" path="res://Scripts/Train.gd" id="5_poxl3"]
 [ext_resource type="PackedScene" uid="uid://cp1rsqd8vb2sp" path="res://Scenes/interface.tscn" id="7_qtk3u"]
-[ext_resource type="PackedScene" path="res://Scenes/Components/TicketCheck.tscn" id="8_7dlo1"]
+[ext_resource type="PackedScene" uid="uid://dounykx4a0epd" path="res://Scenes/Components/TicketCheck.tscn" id="8_7dlo1"]
 [ext_resource type="PackedScene" uid="uid://b4yus1rc87wlq" path="res://Scenes/Components/thing_placer.tscn" id="8_pe0my"]
+[ext_resource type="Theme" uid="uid://brpovs0mfyjqs" path="res://Themes/main_theme.tres" id="8_wh7r3"]
 [ext_resource type="PackedScene" uid="uid://crooavq2kure6" path="res://Scenes/Components/Background/track.tscn" id="9_14sfv"]
 [ext_resource type="Script" path="res://Scripts/LoopingThing.gd" id="9_hi4ob"]
 [ext_resource type="Script" path="res://Scripts/RailPositioner.gd" id="9_lf27q"]
@@ -95,6 +96,36 @@ thing_to_follow = NodePath("../Conductor")
 [node name="BigTicketPathFollow" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath" index="0"]
 cubic_interp = false
 script = SubResource("GDScript_6v55p")
+
+[node name="FlavourType" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="0"]
+theme = ExtResource("8_wh7r3")
+
+[node name="FlavourClass" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="1"]
+theme = ExtResource("8_wh7r3")
+
+[node name="FlavourGenericText" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="2"]
+theme = ExtResource("8_wh7r3")
+
+[node name="FlavourGenericText2" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="3"]
+theme = ExtResource("8_wh7r3")
+
+[node name="FlavourSerialNumber" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="4"]
+theme = ExtResource("8_wh7r3")
+
+[node name="FlavourSerialNumber2" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="5"]
+theme = ExtResource("8_wh7r3")
+
+[node name="TicketFeatureOrigin" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage" index="1"]
+theme = ExtResource("8_wh7r3")
+
+[node name="TicketFeatureDestination2" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage" index="2"]
+theme = ExtResource("8_wh7r3")
+
+[node name="TicketFeaturePrice" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage" index="3"]
+theme = ExtResource("8_wh7r3")
+
+[node name="TicketFeatureDate" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage" index="4"]
+theme = ExtResource("8_wh7r3")
 
 [node name="TicketCheck" parent="PlayerCamera/CanvasLayer/Interface" instance=ExtResource("8_7dlo1")]
 position = Vector2(450, -267)

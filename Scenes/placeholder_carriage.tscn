@@ -100,6 +100,7 @@ shape = SubResource("SegmentShape2D_iuq7v")
 shape = SubResource("SegmentShape2D_eg3rm")
 
 [node name="Hand" type="Node2D" parent="."]
+visible = false
 
 [node name="Finger" parent="Hand" instance=ExtResource("6_jo2cj")]
 position = Vector2(-280, -125)

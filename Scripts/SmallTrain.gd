@@ -5,6 +5,8 @@ extends Node2D
 @onready var train_sprite = $TrainSpritePath/PathFollow2D/SmallTrain
 var timer: Timer
 @export var secondsUntilEnd = 0
+@onready var origin_label = $Origin
+@onready var destination_label = $Destination
 
 var traverseTime = 5 # Time it takes to traverse the path - Link to timer
 var t = 0 # Active time along the path
