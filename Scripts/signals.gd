@@ -9,10 +9,12 @@ func _ready():
 	for passenger in passengers:
 		passenger.checking_ticket.connect(ui.show_ticket)
 		passenger.walked_away.connect(ui.hide_ticket)
+	
 	god.map_built.connect(ui.take_map)
 	god.todays_date.connect(ui.take_date)
 	god.last_stop_chosen.connect(ui.take_last_stop)
 	god.correct_details_created.connect(ui.store_correct_details)
+	
 	ui.guess.connect(god.correct_check)
 	god.amount_checked.connect(ui.check)
 # Called every frame. 'delta' is the elapsed time since the previous frame.

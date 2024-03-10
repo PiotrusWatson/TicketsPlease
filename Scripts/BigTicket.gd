@@ -2,13 +2,13 @@ extends Path2D
 
 
 @onready var pathFollow = $BigTicketPathFollow
-@onready var origin = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin
-@onready var destination = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2
-@onready var ticket_feature_date = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate
-@onready var origin_confirmaton = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureOrigin/Origin
-@onready var destination_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDestination2/Destination
-@onready var date_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/TicketFeatureDate/Date
-@onready var correct_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/Correct/Correct
+@onready var origin = $BigTicketPathFollow/BigTicketImage/TicketFeatureOrigin
+@onready var destination = $BigTicketPathFollow/BigTicketImage/TicketFeatureDestination
+@onready var ticket_feature_date = $BigTicketPathFollow/BigTicketImage/TicketFeatureDate
+@onready var origin_confirmaton = $BigTicketPathFollow/BigTicketImage/TicketFeatureOrigin/Origin
+@onready var destination_confirmation = $BigTicketPathFollow/BigTicketImage/TicketFeatureDestination/Destination
+@onready var date_confirmation = $BigTicketPathFollow/BigTicketImage/TicketFeatureDate/Date
+@onready var correct_confirmation = $BigTicketPathFollow/BigTicketImage/Correct/Correct
 
 var correct_details: CorrectDetails
 var current_passenger

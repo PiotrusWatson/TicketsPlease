@@ -1,4 +1,5 @@
 extends Node
+class_name ThingPlacer
 
 @export var thing_to_place : PackedScene
 @export var starting_location: Vector2

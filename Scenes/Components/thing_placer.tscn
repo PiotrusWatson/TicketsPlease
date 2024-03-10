@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4yus1rc87wlq"]
 
-[ext_resource type="Script" path="res://Scripts/PlaceThingsSideBySide.gd" id="1_udc7r"]
+[ext_resource type="Script" path="res://Scripts/Components/ThingPlacer.gd" id="1_udc7r"]
 [ext_resource type="PackedScene" uid="uid://bf6n7rjm2t0xn" path="res://Scenes/placeholder_carriage.tscn" id="2_qbbg1"]
 
 [node name="ThingPlacer" type="Node"]

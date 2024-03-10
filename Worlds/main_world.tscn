@@ -1,21 +1,20 @@
-[gd_scene load_steps=18 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=17 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
-[ext_resource type="Script" path="res://Worlds/ParallaxBackground.gd" id="2_umu2r"]
+[ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="2_umu2r"]
 [ext_resource type="Script" path="res://Scripts/FollowSomething.gd" id="2_vhvwl"]
 [ext_resource type="Script" path="res://Scripts/MovingBackground.gd" id="5_6dqpj"]
 [ext_resource type="Script" path="res://Scripts/Train.gd" id="5_poxl3"]
 [ext_resource type="Texture2D" uid="uid://ckeqwr880ic3p" path="res://Sprites/PixelTrain/railtrack_v1.png" id="6_ih43u"]
 [ext_resource type="PackedScene" uid="uid://cp1rsqd8vb2sp" path="res://Scenes/interface.tscn" id="7_qtk3u"]
 [ext_resource type="PackedScene" uid="uid://b4yus1rc87wlq" path="res://Scenes/Components/thing_placer.tscn" id="8_pe0my"]
-[ext_resource type="Theme" uid="uid://brpovs0mfyjqs" path="res://Themes/main_theme.tres" id="8_wh7r3"]
 [ext_resource type="Texture2D" uid="uid://dq3r6e1a6te1s" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/sky_fc.png" id="12_abref"]
 [ext_resource type="Texture2D" uid="uid://dgr62ldpnj8gn" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/hill.png" id="12_foiix"]
 [ext_resource type="PackedScene" uid="uid://diyrfdf8h51dr" path="res://Scenes/train_head.tscn" id="13_758je"]
 [ext_resource type="Texture2D" uid="uid://dmoqkjcl08i5k" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/grassy_mountains_fc.png" id="13_j2h3y"]
 [ext_resource type="PackedScene" uid="uid://fkudaoq2mu61" path="res://god.tscn" id="15_1fcc5"]
-[ext_resource type="PackedScene" uid="uid://f84uksoxfkdk" path="res://Scenes/the_boy.tscn" id="15_e8o4o"]
+[ext_resource type="PackedScene" uid="uid://f84uksoxfkdk" path="res://Scenes/Gojira/the_boy.tscn" id="15_e8o4o"]
 
 [sub_resource type="GDScript" id="GDScript_6v55p"]
 script/source = "extends PathFollow2D
@@ -136,24 +135,6 @@ one_shot = true
 [node name="BigTicketPathFollow" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath" index="0"]
 cubic_interp = false
 script = SubResource("GDScript_6v55p")
-
-[node name="FlavourType" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="0"]
-theme = ExtResource("8_wh7r3")
-
-[node name="FlavourClass" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="1"]
-theme = ExtResource("8_wh7r3")
-
-[node name="FlavourGenericText" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="2"]
-theme = ExtResource("8_wh7r3")
-
-[node name="FlavourGenericText2" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="3"]
-theme = ExtResource("8_wh7r3")
-
-[node name="FlavourSerialNumber" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="4"]
-theme = ExtResource("8_wh7r3")
-
-[node name="FlavourSerialNumber2" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath/BigTicketPathFollow/BigTicket/BigTicketImage/Flavour" index="5"]
-theme = ExtResource("8_wh7r3")
 
 [node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
 

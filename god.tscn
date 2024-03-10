@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://fkudaoq2mu61"]
 
-[ext_resource type="Script" path="res://Worlds/God.gd" id="1_pp70b"]
+[ext_resource type="Script" path="res://Scripts/God.gd" id="1_pp70b"]
 
 [node name="God" type="Node2D"]
 script = ExtResource("1_pp70b")

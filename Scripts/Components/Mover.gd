@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Mover
+
 @onready var speed = 300
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var body : CharacterBody2D
