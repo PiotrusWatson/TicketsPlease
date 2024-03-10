@@ -25,3 +25,4 @@ func _process(delta):
 func _on_timer_timeout():
 	timer_label.text = "Time's up!"
 	stopped = true
+	TimesUp.emit()

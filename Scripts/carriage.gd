@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var connector = $Connector
 @onready var left_wall = $LeftBuffer
 @onready var fireManager = $FireManager
+@onready var hand = $Hand
 # Called when the node enters the scene tree for the first time.
 
 func setup():
@@ -31,3 +32,14 @@ func embiggen():
 func MakeFire():
 	fireManager.FirePlacer()
 
+func ShowHand():
+	hand.visible = true
+	
+func HideHand():
+	hand.visible = false
+
+func ShowFire():
+	fireManager.visible = true
+	
+func HideFire():
+	fireManager.visible = false

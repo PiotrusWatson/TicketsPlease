@@ -122,5 +122,6 @@ rotation = 3.14159
 scale = Vector2(1.7, 1.7)
 
 [node name="FireManager" type="Node2D" parent="."]
+visible = false
 script = ExtResource("7_dwiqq")
 fireScene = ExtResource("8_rkbwx")

@@ -1,8 +1,13 @@
-#be not afraid 👀
+#be not afraid 👁
 extends Node
 
 @export var map_size = 7
 @export var percent_incorrect = 0.5
+
+var chaosElements = []
+@onready var theBoy = $"../ParallaxBackground/TheParallaxBoy"
+@onready var train = $"../Train"
+@onready var background = $"../ParallaxBackground"
 
 var place_range_builder: Globals.PlaceRangeBuilder
 var incorrect_ticket_builder: Globals.IncorrectTicketBuilder
@@ -12,6 +17,7 @@ signal map_built(map)
 signal todays_date(date)
 signal last_stop_chosen(stop)
 signal correct_details_created(details)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var date_builder = Globals.DateBuilder.new()
@@ -32,6 +38,7 @@ func tell_us_were_finished():
 	todays_date.emit(correct_detail_holder.date)
 	last_stop_chosen.emit(correct_detail_holder.current_stop)
 	correct_details_created.emit(correct_detail_holder)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -43,3 +50,16 @@ func give_tickets_to_passengers():
 			passenger.give_ticket(incorrect_ticket_builder.generate_incorrect_ticket())
 		else:
 			passenger.give_ticket(correct_detail_holder.GenerateCorrectTicket())
+
+func TheBoyAppears():
+	background.Halt()
+	theBoy.visible = true
+	for i in range(train.carriages.size()):
+		train.carriages[i].ShowHand()
+		train.carriages[i].ShowFire()
+	pass
+
+
+func _on_timer_times_up():
+	TheBoyAppears()
+	pass # Replace with function body.

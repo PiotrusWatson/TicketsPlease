@@ -4,5 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://b33xqb8en0nnp" path="res://Scenes/fire.tscn" id="2_3phj7"]
 
 [node name="FireManager" type="Node2D"]
+visible = false
 script = ExtResource("1_0xs3l")
 fireScene = ExtResource("2_3phj7")
