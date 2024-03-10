@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://f84uksoxfkdk"]
+
+[ext_resource type="Texture2D" uid="uid://b5on7da77o78b" path="res://Sprites/Monster/ziller.png" id="1_xsrfg"]
+
+[node name="TheBoy" type="Node2D"]
+
+[node name="DrawTheBoy" type="CanvasLayer" parent="."]
+
+[node name="ItsHim" type="Sprite2D" parent="DrawTheBoy"]
+texture = ExtResource("1_xsrfg")
