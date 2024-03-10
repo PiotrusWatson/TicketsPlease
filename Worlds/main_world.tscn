@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmcvwc4ljedxh"]
+[gd_scene load_steps=18 format=3 uid="uid://cmcvwc4ljedxh"]
 
 [ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
+[ext_resource type="Script" path="res://Worlds/ParallaxBackground.gd" id="2_umu2r"]
 [ext_resource type="Script" path="res://Scripts/FollowSomething.gd" id="2_vhvwl"]
 [ext_resource type="Script" path="res://Scripts/MovingBackground.gd" id="5_6dqpj"]
 [ext_resource type="Script" path="res://Scripts/Train.gd" id="5_poxl3"]
@@ -37,6 +38,7 @@ script = ExtResource("1_kr5c2")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_enabled = true
 scroll_ignore_camera_zoom = true
+script = ExtResource("2_umu2r")
 
 [node name="Back" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
@@ -103,6 +105,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 65536, 8)
 
 [node name="TheParallaxBoy" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, 262)
@@ -163,6 +166,7 @@ train_head_scene = ExtResource("13_758je")
 
 [node name="God" parent="." instance=ExtResource("15_1fcc5")]
 
+[connection signal="TimesUp" from="PlayerCamera/CanvasLayer/Interface/Timer" to="God" method="_on_timer_times_up"]
 [connection signal="timeout" from="PlayerCamera/CanvasLayer/Interface/Timer/Timer" to="PlayerCamera/CanvasLayer/Interface/Timer" method="_on_timer_timeout"]
 
 [editable path="PlayerCamera/CanvasLayer/Interface"]

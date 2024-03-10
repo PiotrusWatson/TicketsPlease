@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/carriage.gd" id="1_q66aa"]
 [ext_resource type="Script" path="res://Scripts/sprite_helper.gd" id="3_gf4xh"]
 [ext_resource type="PackedScene" uid="uid://bxftaanim0mhs" path="res://Scenes/Components/random_spawner.tscn" id="3_u45o4"]
-[ext_resource type="PackedScene" uid="uid://crtcgftobb0q3" path="res://Scenes/passenger.tscn" id="4_v2p8k"]
+[ext_resource type="PackedScene" path="res://Scenes/passenger.tscn" id="4_v2p8k"]
 [ext_resource type="PackedScene" uid="uid://blf5rql84yn7j" path="res://Scenes/Gojira/finger.tscn" id="6_jo2cj"]
 [ext_resource type="Script" path="res://Scripts/FireManager.gd" id="7_dwiqq"]
 [ext_resource type="PackedScene" uid="uid://b33xqb8en0nnp" path="res://Scenes/fire.tscn" id="8_rkbwx"]
@@ -122,5 +122,6 @@ rotation = 3.14159
 scale = Vector2(1.7, 1.7)
 
 [node name="FireManager" type="Node2D" parent="."]
+visible = false
 script = ExtResource("7_dwiqq")
 fireScene = ExtResource("8_rkbwx")
