@@ -4,6 +4,7 @@ extends Node2D
 @onready var big_ticket = $BigTicketPath
 @onready var small_train = $TrainTravel
 @onready var timer = $Timer/Timer
+@onready var date_display = $DateDisplay
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position.x = windowSize.x / 2
@@ -29,4 +30,4 @@ func take_map(map):
 	small_train.setup_destinations(map)
 	
 func take_date(date):
-	pass
+	date_display.change_date(date)

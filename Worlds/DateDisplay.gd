@@ -9,3 +9,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func change_date(date):
+	dateText.text = date._to_string()
