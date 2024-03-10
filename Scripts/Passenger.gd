@@ -19,6 +19,7 @@ func give_ticket(_ticket: Globals.Ticket):
 func _on_detect_object_body_entered(body):
 	if body.has_method("interact") and !ticket_checked:
 		checking_ticket.emit(ticket, self)
+		DialogueManager.show_dialogue_balloon(load("res://Dialogue/tickets_please.dialogue"))
 
 
 func handle_guess(type_of_guess: Globals.Guess, is_correct):
