@@ -11,6 +11,7 @@ extends Path2D
 @onready var correct_confirmation = $BigTicketPathFollow/BigTicket/BigTicketImage/Correct/Correct
 
 var correct_details: Globals.CorrectDetails
+var current_passenger
 var showTicket = false
 
 var traverseTime = 5 # Time it takes to traverse the path
@@ -18,7 +19,7 @@ var t = 0 # Active time along the path
 var pathLength = 0 # Length of the path
 
 var current_ticket: Globals.Ticket
-signal guess(content)
+signal guess(content, is_correct)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,7 +37,7 @@ func _process(delta):
 		pathFollow.progress += t + 15
 	pass
 
-func ShowTicket(ticket: Globals.Ticket): 
+func ShowTicket(ticket: Globals.Ticket, passenger): 
 	ticket_feature_date.text = "Date of Travel:\n" + ticket.date._to_string()
 	var place_range = ticket.from_and_to
 	origin.text = "from " + place_range.from._to_string()
@@ -44,6 +45,7 @@ func ShowTicket(ticket: Globals.Ticket):
 	showTicket = true
 	visible = true
 	current_ticket = ticket
+	current_passenger = passenger
 	
 func HideTicket(): 
 	showTicket = false
@@ -75,11 +77,17 @@ func store_correct_details(details):
 
 func _on_origin_guess():
 	var correct_guess = !correct_details.is_from_correct(current_ticket)
+	guess.emit(Globals.Guess.BAD_ORIGIN, correct_guess)
+	current_passenger.handle_guess(Globals.Guess.BAD_ORIGIN, correct_guess)
 func _on_destination_guess():
 	var correct_guess = !correct_details.is_to_correct(current_ticket)
-
+	guess.emit(Globals.Guess.BAD_DESTINATION, correct_guess)
+	current_passenger.handle_guess(Globals.Guess.BAD_DESTINATION, correct_guess)
 func _on_date_guess():
 	var correct_guess = !correct_details.is_date_correct(current_ticket)
-
+	guess.emit(Globals.Guess.BAD_DATE, correct_guess)
+	current_passenger.handle_guess(Globals.Guess.BAD_DATE, correct_guess)
 func _on_correct_guess():
 	var correct_guess = correct_details.is_ticket_correct(current_ticket)
+	guess.emit(Globals.Guess.ALL_CORRECT, correct_guess)
+	current_passenger.handle_guess(Globals.Guess.ALL_CORRECT, correct_guess)
