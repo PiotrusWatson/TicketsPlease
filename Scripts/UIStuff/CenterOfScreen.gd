@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var windowSize = DisplayServer.window_get_size()
-@onready var big_ticket = $BigTicketPath
+@onready var big_ticket = $BigTicket
 @onready var small_train = $TrainTravel
 @onready var timerParent = $Timer
 @onready var timer = $Timer/Timer
@@ -11,8 +11,6 @@ extends Node2D
 signal guess(content, is_correct)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer.wait_time = (timerParent.timerCountdownMinutes * 60) + timerParent.timerCountdownSeconds
-	print("Timer should be [" + str(timer.wait_time) + "] seconds in duration")
 	position.x = windowSize.x / 2
 	position.y = windowSize.y / 2
 	small_train.setup(timer)

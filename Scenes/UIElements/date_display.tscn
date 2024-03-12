@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3fjhm4lffblm"]
+
+[ext_resource type="Script" path="res://Scripts/DateDisplay.gd" id="1_8hnpd"]
+
+[node name="DateDisplay" type="Node2D"]
+script = ExtResource("1_8hnpd")
+
+[node name="DateText" type="Label" parent="."]
+offset_left = -550.0
+offset_top = -306.0
+offset_right = -442.0
+offset_bottom = -283.0
+text = "📅 10-MAR-24"
+metadata/_edit_use_anchors_ = true

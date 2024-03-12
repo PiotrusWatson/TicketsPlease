@@ -1,0 +1,170 @@
+[gd_scene load_steps=21 format=3 uid="uid://d4f0do8gxm0r2"]
+
+[ext_resource type="Script" path="res://Scripts/UIStuff/SmallTrain.gd" id="1_rmdwd"]
+[ext_resource type="Texture2D" uid="uid://b25hjv6em0vsc" path="res://Sprites/PixelTrain/sheet_train_v18.png" id="2_doo01"]
+
+[sub_resource type="Curve2D" id="Curve2D_7npje"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -300, -288, -50, -10, 50, 10, -200, -288, -50, -10, 50, 10, -100, -288, -50, -10, 50, 10, 0, -288, -50, -10, 50, 10, 100, -288, -50, -10, 50, 10, 200, -288, -50, -10, 0, 0, 300, -288)
+}
+point_count = 7
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfm3n"]
+atlas = ExtResource("2_doo01")
+region = Rect2(0, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpfec"]
+atlas = ExtResource("2_doo01")
+region = Rect2(256, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti0mm"]
+atlas = ExtResource("2_doo01")
+region = Rect2(512, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qubaf"]
+atlas = ExtResource("2_doo01")
+region = Rect2(768, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg3yl"]
+atlas = ExtResource("2_doo01")
+region = Rect2(1024, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra0ah"]
+atlas = ExtResource("2_doo01")
+region = Rect2(1280, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6kir"]
+atlas = ExtResource("2_doo01")
+region = Rect2(1536, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peqme"]
+atlas = ExtResource("2_doo01")
+region = Rect2(1792, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sgcu"]
+atlas = ExtResource("2_doo01")
+region = Rect2(2048, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhc56"]
+atlas = ExtResource("2_doo01")
+region = Rect2(2304, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0iua"]
+atlas = ExtResource("2_doo01")
+region = Rect2(2560, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7dvx"]
+atlas = ExtResource("2_doo01")
+region = Rect2(2816, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0y4p"]
+atlas = ExtResource("2_doo01")
+region = Rect2(3072, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jg3e"]
+atlas = ExtResource("2_doo01")
+region = Rect2(3328, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_texdq"]
+atlas = ExtResource("2_doo01")
+region = Rect2(3584, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk15w"]
+atlas = ExtResource("2_doo01")
+region = Rect2(3840, 0, 256, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ipm8o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfm3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpfec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti0mm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qubaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg3yl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra0ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6kir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peqme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sgcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhc56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0iua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7dvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0y4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jg3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_texdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk15w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[node name="TrainTravel" type="Node2D"]
+position = Vector2(0, 35.95)
+script = ExtResource("1_rmdwd")
+
+[node name="TrainSpritePath" type="Path2D" parent="."]
+position = Vector2(-13, 1)
+curve = SubResource("Curve2D_7npje")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="TrainSpritePath"]
+position = Vector2(-300, -288)
+cubic_interp = false
+loop = false
+
+[node name="SmallTrain" type="AnimatedSprite2D" parent="TrainSpritePath/PathFollow2D"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ipm8o")
+frame_progress = 0.678365
+
+[node name="_Timer_18135" type="Timer" parent="TrainSpritePath/PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Origin" type="Label" parent="."]
+offset_left = -336.0
+offset_top = -281.0
+offset_right = -288.0
+offset_bottom = -258.0
+rotation = -0.811578
+text = "Origin"
+
+[node name="Destination" type="Label" parent="."]
+offset_left = 220.0
+offset_top = -264.0
+offset_right = 310.0
+offset_bottom = -241.0
+rotation = -0.785398
+text = "Destination"
+
+[node name="StopsOnTheWay" type="Node2D" parent="."]
