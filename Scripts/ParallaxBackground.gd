@@ -5,6 +5,7 @@ extends ParallaxBackground
 @onready var fore = $Fore
 @onready var rail = $Rail
 @onready var railChild = $Rail/Rail
+@onready var gojira = $TheParallaxBoy
 
 var railZoop = false
 
@@ -23,10 +24,14 @@ func _process(delta):
 		railZoop = false
 	pass
 
+
+func show_gojira():
+	gojira.visible = true
+	Halt()
+	
 func Halt():
 	back.amount_to_move = 0
 	mid.amount_to_move = 0
 	fore.amount_to_move = 0
 	rail.amount_to_move = 0
 	rail.visible = false
-	pass

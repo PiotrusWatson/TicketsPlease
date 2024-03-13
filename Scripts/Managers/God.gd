@@ -25,14 +25,14 @@ var max_to_check: int
 var checked = 0
 var chaosElements = []
 var current_passenger: Passenger
-@onready var theBoy = $"../ParallaxBackground/TheParallaxBoy"
+var gojira_has_appeared = false
 @onready var train = $"../Train"
-@onready var background = $"../ParallaxBackground"
 
 var place_range_builder: PlaceRangeBuilder
 var correct_detail_holder: CorrectDetails
 var passengers
 var map
+signal it_begins
 signal map_built(map)
 signal todays_date(date)
 signal last_stop_chosen(stop)
@@ -74,20 +74,17 @@ func give_tickets_to_passengers():
 		else:
 			passenger.give_ticket(Ticket.generate_correct_ticket(correct_detail_holder.date, place_range_builder))
 
-func TheBoyAppears():
-	background.Halt()
-	theBoy.visible = true
+func handle_timeout():
+	if !gojira_has_appeared:
+		the_boy_appears()
+	else:
+		pass
+func the_boy_appears():
+	it_begins.emit()
 	DialogueManager.show_dialogue_balloon(load("res://Dialogue/oh_shit_its_godzilla.dialogue"))
 	for i in range(train.carriages.size()):
 		train.carriages[i].ShowHand()
 		train.carriages[i].ShowFire()
-	pass
-
-
-func _on_timer_times_up():
-	TheBoyAppears()
-	pass # Replace with function body.
-
 
 func play_dialogues_depending_on_correctness(dialogues, is_correct):
 	DialogueManager.show_dialogue_balloon(dialogues[0])

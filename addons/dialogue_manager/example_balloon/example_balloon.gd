@@ -7,6 +7,7 @@ const NEXT_ACTION = &"ui_accept"
 const SKIP_ACTION = &"ui_cancel"
 
 @export var time_until_next_line = 0.04
+@export var max_time_to_read = 0.6
 @onready var balloon: Control = %Balloon
 @onready var character_label: RichTextLabel = %CharacterLabel
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
@@ -61,6 +62,8 @@ var dialogue_line: DialogueLine:
 
 		# Wait for input
 		var time = dialogue_line.text.length() * time_until_next_line
+		if time > max_time_to_read:
+			time = max_time_to_read
 		await get_tree().create_timer(time).timeout
 		next(dialogue_line.next_id)
 		

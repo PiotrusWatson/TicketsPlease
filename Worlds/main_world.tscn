@@ -123,9 +123,11 @@ train_head_scene = ExtResource("13_758je")
 [node name="Carriages" parent="Train" instance=ExtResource("8_pe0my")]
 
 [node name="God" parent="." instance=ExtResource("15_1fcc5")]
+map_size = 7
+percent_incorrect = 0.5
 
 [node name="Clock" parent="." instance=ExtResource("16_8ogim")]
-wait_time = 30.0
+wait_time = 10.0
 autostart = true
 
 [connection signal="TimesUp" from="PlayerCamera/CanvasLayer/Interface/Timer" to="God" method="_on_timer_times_up"]
