@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name Passenger
 
 signal checking_ticket(ticket, passenger)
 signal walked_away

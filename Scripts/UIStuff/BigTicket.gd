@@ -20,6 +20,7 @@ var pathLength = 0 # Length of the path
 
 var current_ticket: Ticket
 signal guess(content, is_correct)
+signal inspecting_passenger(passenger: Passenger)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,7 +38,7 @@ func _process(delta):
 		pathFollow.progress += t + 15
 	pass
 
-func ShowTicket(ticket: Ticket, passenger): 
+func ShowTicket(ticket: Ticket, passenger: Passenger): 
 	ticket_feature_date.text = "Date of Travel:\n" + ticket.date._to_string()
 	var place_range = ticket.from_and_to
 	origin.text = "from " + place_range.from._to_string()
@@ -45,7 +46,7 @@ func ShowTicket(ticket: Ticket, passenger):
 	showTicket = true
 	visible = true
 	current_ticket = ticket
-	current_passenger = passenger
+	inspecting_passenger.emit(passenger)
 	
 func HideTicket(): 
 	showTicket = false
@@ -76,42 +77,14 @@ func store_correct_details(details):
 	correct_details = details
 
 func _on_origin_guess():
-	DialogueManager.show_dialogue_balloon(load("res://Dialogue/accuse_from.dialogue"))
-	await get_tree().create_timer(1).timeout
 	var correct_guess = !correct_details.is_from_correct(current_ticket)
 	guess.emit(Globals.Guess.BAD_ORIGIN, correct_guess)
-	current_passenger.handle_guess(Globals.Guess.BAD_ORIGIN, correct_guess)
-	if correct_guess:
-		DialogueManager.show_dialogue_balloon(load("res://Dialogue/right_date.dialogue"))
-	else:
-		DialogueManager.show_dialogue_balloon(load("res://Dialogue/wrong_from.dialogue"))
 func _on_destination_guess():
-	DialogueManager.show_dialogue_balloon(load("res://Dialogue/accuse_to.dialogue"), "", [{"time": Globals.time_to_read}])
-	await get_tree().create_timer(1).timeout
 	var correct_guess = !correct_details.is_to_correct(current_ticket)
 	guess.emit(Globals.Guess.BAD_DESTINATION, correct_guess)
-	current_passenger.handle_guess(Globals.Guess.BAD_DESTINATION, correct_guess)
-	if correct_guess:
-		DialogueManager.show_dialogue_balloon(load("res://Dialogue/right_date.dialogue"))
-	else:
-		DialogueManager.show_dialogue_balloon(load("res://Dialogue/wrong_to.dialogue"))
 func _on_date_guess():
-	DialogueManager.show_dialogue_balloon(load("res://Dialogue/accuse_date.dialogue"), "", [{"time": Globals.time_to_read}])
-	await get_tree().create_timer(1).timeout
 	var correct_guess = !correct_details.is_date_correct(current_ticket)
 	guess.emit(Globals.Guess.BAD_DATE, correct_guess)
-	current_passenger.handle_guess(Globals.Guess.BAD_DATE, correct_guess)
-	if correct_guess:
-		DialogueManager.show_dialogue_balloon(load("res://Dialogue/right_date.dialogue"))
-	else:
-		DialogueManager.show_dialogue_balloon(load("res://Dialogue/wrong_date.dialogue"))
 func _on_correct_guess():
-	DialogueManager.show_dialogue_balloon(load("res://Dialogue/all_good.dialogue"), "", [{"time": Globals.time_to_read}])
-	await get_tree().create_timer(1).timeout
 	var correct_guess = correct_details.is_ticket_correct(current_ticket)
 	guess.emit(Globals.Guess.ALL_CORRECT, correct_guess)
-	current_passenger.handle_guess(Globals.Guess.ALL_CORRECT, correct_guess)
-	if correct_guess:
-		DialogueManager.show_dialogue_balloon(load("res://Dialogue/right_all_good.dialogue"))
-	else:
-		DialogueManager.show_dialogue_balloon(load("res://Dialogue/wrong_all_good.dialogue"))

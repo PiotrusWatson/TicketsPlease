@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://cmcvwc4ljedxh"]
 
-[ext_resource type="Script" path="res://Scripts/signals.gd" id="1_kr5c2"]
+[ext_resource type="Script" path="res://Scripts/Managers/signals.gd" id="1_kr5c2"]
 [ext_resource type="PackedScene" uid="uid://bblxhlnrbhb6k" path="res://Scenes/conductor.tscn" id="2_sg51p"]
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="2_umu2r"]
 [ext_resource type="Script" path="res://Scripts/FollowSomething.gd" id="2_vhvwl"]

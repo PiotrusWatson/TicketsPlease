@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3fjhm4lffblm"]
 
-[ext_resource type="Script" path="res://Scripts/DateDisplay.gd" id="1_8hnpd"]
+[ext_resource type="Script" path="res://Scripts/UIStuff/DateDisplay.gd" id="1_8hnpd"]
 
 [node name="DateDisplay" type="Node2D"]
 script = ExtResource("1_8hnpd")

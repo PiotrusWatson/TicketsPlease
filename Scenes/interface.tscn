@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cp1rsqd8vb2sp"]
 
-[ext_resource type="Script" path="res://Scripts/UIStuff/CenterOfScreen.gd" id="1_2sivv"]
+[ext_resource type="Script" path="res://Scripts/UIStuff/Interface.gd" id="1_2sivv"]
 [ext_resource type="PackedScene" uid="uid://bbwpbug2x4rm0" path="res://Scenes/Components/timer.tscn" id="2_lgn25"]
 [ext_resource type="PackedScene" uid="uid://d4f0do8gxm0r2" path="res://Scenes/UIElements/train_travel.tscn" id="3_by2md"]
 [ext_resource type="PackedScene" uid="uid://765u1k8tjfyg" path="res://Scenes/UIElements/big_ticket.tscn" id="4_t50a7"]
@@ -36,5 +36,8 @@ offset_top = -268.0
 offset_right = -471.0
 offset_bottom = -245.0
 text = "Last Stop: "
+
+[connection signal="guess" from="BigTicket" to="." method="_on_big_ticket_guess"]
+[connection signal="inspecting_passenger" from="BigTicket" to="." method="_on_big_ticket_inspecting_passenger"]
 
 [editable path="Timer"]
