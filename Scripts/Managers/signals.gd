@@ -18,7 +18,7 @@ func _ready():
 	god.correct_details_created.connect(ui.store_correct_details)
 	god.amount_checked.connect(ui.check)
 	god.it_begins.connect(background.show_gojira)
-	
+	god.number_to_check_generated.connect(ui.update_max_tickets)
 	ui.guess.connect(god.correct_check)
 	ui.inspecting_passenger.connect(god.set_current_passenger)
 	

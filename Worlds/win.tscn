@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://f44ml4qhfrqv"]
 
-[ext_resource type="Script" path="res://DeathScene.gd" id="1_8jpje"]
+[ext_resource type="Script" path="res://Scripts/DeathScene.gd" id="1_8jpje"]
 [ext_resource type="Theme" uid="uid://brpovs0mfyjqs" path="res://Themes/main_theme.tres" id="2_820iq"]
 [ext_resource type="Texture2D" uid="uid://ujmgw672nrbl" path="res://Sprites/PixelTrain/train_v18.png" id="3_r3c7o"]
 

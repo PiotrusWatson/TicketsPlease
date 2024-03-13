@@ -26,7 +26,6 @@ offset_bottom = 13.0
 
 [node name="TicketCheck" parent="." instance=ExtResource("10_1upvi")]
 position = Vector2(450, -267)
-ticketsToCheck = 2
 
 [node name="DateDisplay" parent="." instance=ExtResource("6_j8n1i")]
 

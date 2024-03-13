@@ -6,7 +6,7 @@ extends Node2D
 @onready var timer = $Timer
 @onready var date_display = $DateDisplay
 @onready var last_stop_display = $PlaceholderLastStop
-
+@onready var ticket_checker = $TicketCheck
 signal inspecting_passenger(passenger: Passenger)
 signal guess(content, is_correct)
 # Called when the node enters the scene tree for the first time.
@@ -59,3 +59,6 @@ func show_time(time_left):
 	
 func times_up():
 	timer.times_up()
+
+func update_max_tickets(number_to_check):
+	ticket_checker.update_max_tickets(number_to_check)

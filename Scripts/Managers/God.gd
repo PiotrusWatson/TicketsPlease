@@ -22,17 +22,22 @@ signal map_built(map)
 signal todays_date(date)
 signal last_stop_chosen(stop)
 signal correct_details_created(details)
+signal number_to_check_generated(number_to_check)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+
+func _init():
 	var correct_date = Date.generate_date()
 	var possible_places = BuilderHelpers.make_possible_places(Globals.names)
 	map = BuilderHelpers.build_map(possible_places, 7)
 	var current_stop = BuilderHelpers.make_current_stop(map)
 	place_range_builder = PlaceRangeBuilder.new(map, current_stop, possible_places)
 	correct_detail_holder = CorrectDetails.new(correct_date, current_stop)
-	get_tree().create_timer(1).timeout.connect(tell_us_were_finished)
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	get_tree().create_timer(0.5).timeout.connect(tell_us_were_finished)
 	passengers = get_tree().get_nodes_in_group("passenger")
+	
 	max_to_check = passengers.size() / 2
 	give_tickets_to_passengers()
 	
@@ -42,6 +47,7 @@ func tell_us_were_finished():
 	todays_date.emit(correct_detail_holder.date)
 	last_stop_chosen.emit(correct_detail_holder.current_stop)
 	correct_details_created.emit(correct_detail_holder)
+	number_to_check_generated.emit(max_to_check)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -75,6 +81,9 @@ func correct_check(guess_type: Globals.Guess, is_correct):
 		amount_checked.emit(checked)
 	if checked >= max_to_check:
 		get_tree().change_scene_to_file("res://Worlds/win.tscn")
+		var level = get_tree().root.get_node("World")
+		get_tree().root.remove_child(level)
+		level.call_deferred("free")
 		
 func set_current_passenger(passenger: Passenger):
 	current_passenger = passenger
