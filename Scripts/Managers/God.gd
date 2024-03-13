@@ -90,7 +90,6 @@ func _on_timer_times_up():
 
 
 func play_dialogues_depending_on_correctness(dialogues, is_correct):
-	print("im talking")
 	DialogueManager.show_dialogue_balloon(dialogues[0])
 	await DialogueManager.dialogue_ended
 	if is_correct:

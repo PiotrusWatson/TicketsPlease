@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var ui = $PlayerCamera/CanvasLayer/Interface
 @onready var god = $God
+@onready var clock = $Clock
 var passengers : Array[Node]
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,10 +15,15 @@ func _ready():
 	god.todays_date.connect(ui.take_date)
 	god.last_stop_chosen.connect(ui.take_last_stop)
 	god.correct_details_created.connect(ui.store_correct_details)
+	god.amount_checked.connect(ui.check)
+	
 	
 	ui.guess.connect(god.correct_check)
 	ui.inspecting_passenger.connect(god.set_current_passenger)
-	god.amount_checked.connect(ui.check)
+	
+	clock.tick.connect(ui.show_time)
+	clock.timeout.connect(ui.times_up)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass

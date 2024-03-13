@@ -3,8 +3,7 @@ extends Node2D
 @onready var windowSize = DisplayServer.window_get_size()
 @onready var big_ticket = $BigTicket
 @onready var small_train = $TrainTravel
-@onready var timerParent = $Timer
-@onready var timer = $Timer/Timer
+@onready var timer = $Timer
 @onready var date_display = $DateDisplay
 @onready var last_stop_display = $PlaceholderLastStop
 
@@ -14,7 +13,6 @@ signal guess(content, is_correct)
 func _ready():
 	position.x = windowSize.x / 2
 	position.y = windowSize.y / 2
-	small_train.setup(timer)
 	pass # Replace with function body.
 
 
@@ -54,3 +52,10 @@ func _on_big_ticket_inspecting_passenger(passenger):
 func _on_big_ticket_guess(content, is_correct):
 	guess.emit(content, is_correct)
 	hide_ticket()
+
+func show_time(time_left):
+	timer.show_time(time_left)
+	small_train.get_time(time_left)
+	
+func times_up():
+	timer.times_up()

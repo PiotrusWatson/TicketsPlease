@@ -8,14 +8,12 @@ var timer: Timer
 @onready var origin_label = $Origin
 @onready var destination_label = $Destination
 @onready var stops_on_the_way = $StopsOnTheWay
-
+var first_time = true
 var traverseTime = 0 # Time it takes to traverse the path
 var pathLength = 0 # Length of the path
 
 func setup(_timer: Timer):
-	timer = _timer
-	traverseTime = GetTime()
-	print("Timer Started at: " + str(traverseTime))
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
@@ -29,10 +27,10 @@ func _process(delta):
 	pathFollow.progress += (pathLength / traverseTime) * delta
 	pass
 
-func GetTime():
-	secondsUntilEnd = timer.time_left
-	return secondsUntilEnd
-
+func get_time(time_left):
+	if first_time:
+		traverseTime = time_left
+		first_time = false
 func setup_destinations(map):
 	origin_label.text = map[0].name
 	destination_label.text = map[map.size() - 1].name

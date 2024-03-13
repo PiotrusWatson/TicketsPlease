@@ -15,20 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dmoqkjcl08i5k" path="res://Sprites/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/grassy_mountains_fc.png" id="13_j2h3y"]
 [ext_resource type="PackedScene" uid="uid://fkudaoq2mu61" path="res://god.tscn" id="15_1fcc5"]
 [ext_resource type="PackedScene" uid="uid://f84uksoxfkdk" path="res://Scenes/Gojira/the_boy.tscn" id="15_e8o4o"]
-
-[sub_resource type="GDScript" id="GDScript_6v55p"]
-script/source = "extends PathFollow2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-"
+[ext_resource type="PackedScene" uid="uid://1pu4u3qdyj2h" path="res://clock.tscn" id="16_8ogim"]
 
 [node name="World" type="Node2D"]
 texture_filter = 1
@@ -126,16 +113,6 @@ thing_to_follow = NodePath("../Conductor")
 
 [node name="Interface" parent="PlayerCamera/CanvasLayer" instance=ExtResource("7_qtk3u")]
 
-[node name="Timer" parent="PlayerCamera/CanvasLayer/Interface" index="0"]
-timerCountdownMinutes = 2
-
-[node name="Timer" parent="PlayerCamera/CanvasLayer/Interface/Timer" index="2"]
-one_shot = true
-
-[node name="BigTicketPathFollow" parent="PlayerCamera/CanvasLayer/Interface/BigTicketPath" index="0"]
-cubic_interp = false
-script = SubResource("GDScript_6v55p")
-
 [node name="Conductor" parent="." instance=ExtResource("2_sg51p")]
 
 [node name="Train" type="Node2D" parent="."]
@@ -147,8 +124,11 @@ train_head_scene = ExtResource("13_758je")
 
 [node name="God" parent="." instance=ExtResource("15_1fcc5")]
 
+[node name="Clock" parent="." instance=ExtResource("16_8ogim")]
+wait_time = 30.0
+autostart = true
+
 [connection signal="TimesUp" from="PlayerCamera/CanvasLayer/Interface/Timer" to="God" method="_on_timer_times_up"]
-[connection signal="timeout" from="PlayerCamera/CanvasLayer/Interface/Timer/Timer" to="PlayerCamera/CanvasLayer/Interface/Timer" method="_on_timer_timeout"]
 
 [editable path="PlayerCamera/CanvasLayer/Interface"]
 [editable path="PlayerCamera/CanvasLayer/Interface/Timer"]
