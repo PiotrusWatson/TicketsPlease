@@ -6,7 +6,7 @@ const NEXT_ACTION = &"ui_accept"
 ## The action to use to skip typing the dialogue
 const SKIP_ACTION = &"ui_cancel"
 
-
+@export var time_until_next_line = 0.04
 @onready var balloon: Control = %Balloon
 @onready var character_label: RichTextLabel = %CharacterLabel
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
@@ -60,7 +60,7 @@ var dialogue_line: DialogueLine:
 			await dialogue_label.finished_typing
 
 		# Wait for input
-		var time = dialogue_line.text.length() * 0.07 
+		var time = dialogue_line.text.length() * time_until_next_line
 		await get_tree().create_timer(time).timeout
 		next(dialogue_line.next_id)
 		
