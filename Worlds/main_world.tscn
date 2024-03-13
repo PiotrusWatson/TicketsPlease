@@ -124,7 +124,7 @@ train_head_scene = ExtResource("13_758je")
 
 [node name="God" parent="." instance=ExtResource("15_1fcc5")]
 map_size = 7
-percent_incorrect = 0.5
+percent_incorrect = 0.0
 
 [node name="Clock" parent="." instance=ExtResource("16_8ogim")]
 wait_time = 10.0
